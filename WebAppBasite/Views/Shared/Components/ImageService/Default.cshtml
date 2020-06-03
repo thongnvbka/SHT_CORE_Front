@@ -1,0 +1,1134 @@
+﻿
+@model List<WebAppBasite.Models.ProjectModels.Images>
+@using WebAppBasite.App_Code
+
+<style>
+    /* all */
+    @@-webkit-keyframes gra-btn {
+        0% {
+            background-position: 0% 94%;
+        }
+
+        50% {
+            background-position: 100% 7%;
+        }
+
+        100% {
+            background-position: 0% 94%;
+        }
+    }
+
+    @@-moz-keyframes gra-btn {
+        0% {
+            background-position: 0% 94%;
+        }
+
+        50% {
+            background-position: 100% 7%;
+        }
+
+        100% {
+            background-position: 0% 94%;
+        }
+    }
+
+    @@-o-keyframes gra-btn {
+        0% {
+            background-position: 0% 94%;
+        }
+
+        50% {
+            background-position: 100% 7%;
+        }
+
+        100% {
+            background-position: 0% 94%;
+        }
+    }
+
+    @@keyframes gra-btn {
+        0% {
+            background-position: 0% 94%;
+        }
+
+        50% {
+            background-position: 100% 7%;
+        }
+
+        100% {
+            background-position: 0% 94%;
+        }
+    }
+
+
+
+    .homepage .section-2 .s2-images-wrap {
+        position: relative;
+        width: 54%;
+        max-width: 774px;
+        margin: 0 auto;
+    }
+
+    .homepage .section-2 .s2-main-img {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    img {
+        vertical-align: middle;
+    }
+
+    .img-fluid,
+    .carousel-inner > .carousel-item > img,
+    .carousel-inner > .carousel-item > a > img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .homepage .section-2 .s2-model {
+        position: absolute;
+        top: 45%;
+        left: 54%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        width: 65%;
+    }
+
+    .homepage .section-2 .img-list {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+
+
+        .homepage .section-2 .img-list .item:before {
+            content: '';
+            display: block;
+            padding-top: 100%;
+        }
+
+        /**,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }*/
+
+        .homepage .section-2 .img-list .item img {
+            border: 0.1em solid #fae6a6;
+            box-shadow: 0px 0px 5px 0px #fae6a6;
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+
+    .img-circle {
+        border-radius: 50%;
+    }
+
+    .s2_desc_img {
+        width: 100%;
+    }
+
+
+    .homepage .section-2 .item-desc {
+        position: absolute;
+        width: 65%;
+        top: 35%;
+        left: 50%;
+        transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        text-align: center;
+        color: black;
+        display: none;
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    .homepage .section-2 .item-desc-list-pc .item-desc {
+        position: absolute;
+        width: 65%;
+        top: 35%;
+        left: 50%;
+        transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        color: black;
+        text-align: unset;
+        display: none;
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+        .homepage .section-2 .item-desc-list-pc .item-desc .item-title {
+            text-align: center;
+        }
+
+        .homepage .section-2 .item-desc-list-pc .item-desc .text-desc {
+            text-align: justify;
+        }
+
+    .homepage .section-2 .img-list .item1 {
+        top: 6%;
+        left: -10%;
+    }
+
+    .homepage .section-2 .img-list .item2 {
+        top: 54%;
+        left: -12%;
+    }
+
+    .homepage .section-2 .img-list .item3 {
+        top: 71%;
+        left: 40%;
+    }
+
+    .homepage .section-2 .img-list .item4 {
+        top: 54%;
+        right: -20%;
+    }
+
+    .homepage .section-2 .img-list .item5 {
+        top: 6%;
+        right: -15%;
+    }
+
+    .homepage .section-2 .img-list .item6 {
+        top: 2%;
+        left: 40%;
+    }
+
+    .homepage .section-2 .img-list .item.active {
+        transform: scale(1.1);
+        -o-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+
+    .homepage .section-2 .item-desc .item-title {
+        display: block;
+        margin: 2% 0 0;
+        font-size: 34px;
+        font-weight: 700;
+        line-height: 1.2;
+        text-transform: uppercase;
+        color: #e28a06;
+        margin-bottom: 5px;
+    }
+
+
+    .homepage a.ppp-btn.more-btn {
+        display: inline-block;
+    }
+
+    .homepage .section-2 .s2-more-btn {
+        position: absolute;
+        top: 71%;
+        left: 50%;
+        padding: 10px 9%;
+        text-align: center;
+        transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+    }
+
+    .ppp-btn {
+        cursor: pointer;
+        padding: 15px 30px;
+        color: #fff;
+        background: linear-gradient(#32cbff, #27b1ff);
+        text-transform: uppercase !important;
+        transition: 1s;
+        -o-transition: 1s;
+        -moz-transition: 1s;
+        -webkit-transition: 1s;
+    }
+
+        .ppp-btn span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s cubic-bezier(0, 0.01, 0.1, 1);
+            -o-transition: 0.5s cubic-bezier(0, 0.01, 0.1, 1);
+            -ms-transition: 0.5s cubic-bezier(0, 0.01, 0.1, 1);
+            -moz-transition: 0.5s cubic-bezier(0, 0.01, 0.1, 1);
+            -webkit-transition: 0.5s cubic-bezier(0, 0.01, 0.1, 1);
+        }
+
+            .ppp-btn span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -7px;
+                transition: 0.5s;
+                -o-transition: 0.5s;
+                -moz-transition: 0.5s;
+                -webkit-transition: 0.5s;
+            }
+
+    .homepage .section-2 .s2-images-wrap:before {
+        display: block;
+        content: "";
+        padding: 0 0 120%;
+    }
+
+    .ppp-btn:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+
+    .ppp-btn:hover span {
+        padding-right: 10px;
+    }
+
+
+    .section-3 .s3-tieuchi.for-desktop .block-tieuchi:nth-child(2n + 1) {
+        clear: both;
+    }
+
+    .section-3 .block-tieuchi {
+        float: left;
+        width: 50%;
+        padding: 0 15px;
+    }
+
+        .section-3 .block-tieuchi .img-gioithieu-style img {
+            min-height: 80px;
+            min-width: 80px;
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+        }
+
+        .section-3 .block-tieuchi .info-block {
+            text-align: justify;
+            padding-bottom: 5%;
+            overflow: hidden;
+            margin-left: 0;
+        }
+
+
+
+    /* endfeedback */
+    /* mobie */
+    /*@@media (max-width: 992px) {
+        .homepage .section-2 .s2-images-wrap {
+            width: 70%;
+            margin-top: 0px;
+        }
+        .section-3 .block-tieuchi .info-block .feed-back {
+            color: #6d6e71;
+            font-size: 15px;
+            line-height: 26px;
+            word-spacing: -2px;
+        }
+        #section-3 {
+            background-image: url(' /UITheme/assets/images/imgroyalspa/home/background-YKKH-mobile.jpg');
+        }
+
+    }*/
+
+    #section-3 {
+        background-image: url('/UITheme/assets/images/imgroyalspa/home/Y KIEN KHACH HANG - PC.jpg');
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .section-2 {
+        background-image: url('/UITheme/assets/images/imgroyalspa/home/background - PC.jpg');
+        background-size: cover;
+    }
+
+    .Kh_hailong {
+        margin: 4% 0;
+    }
+
+    @@media (min-width: 768px) {
+        .item3 br {
+            display: none;
+        }
+
+        .section-2 {
+            background-image: url('/UITheme/assets/images/imgroyalspa/home/background - PC.jpg');
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .hidden-md-up {
+            display: none !important;
+        }
+
+        .homepage .section-2 .s2-more-btn {
+            padding: 10px 30px;
+        }
+
+        .section-3 .block-tieuchi {
+            margin: 0px 0 30px;
+        }
+
+            .section-3 .block-tieuchi .img-gioithieu-style img {
+                width: 100%;
+            }
+
+            .section-3 .block-tieuchi .info-block .title-tieuchi h4 {
+                padding-top: 3%;
+                color: #b77e02;
+                text-transform: uppercase;
+                letter-spacing: 0px;
+                font-weight: lighter;
+                font-size: 20px;
+                text-shadow: 0px 0px 1px #b77e02;
+            }
+
+            .section-3 .block-tieuchi .info-block .reviewers {
+                letter-spacing: 0px;
+                float: right;
+                color: #b77e02;
+                text-transform: capitalize;
+                margin-top: 0;
+                text-shadow: 0px 0px 1px #b77e02b0;
+            }
+
+        .box-img {
+            padding: 0 50px;
+        }
+
+        #section-3 {
+            background-image: url('/UITheme/assets/images/imgroyalspa/home/Y KIEN KHACH HANG - PC.jpg');
+        }
+
+        .homepage .section-2 .img-list .item, .itema {
+            display: inline;
+            position: absolute;
+            cursor: pointer;
+            width: 30%;
+            transition: transform 0.3s ease;
+        }
+
+        .img-gioithieu-style {
+            padding: 2px;
+            border: 0.1em solid #fae6a6;
+            box-shadow: 0px 0px 5px 0px #fae6a6;
+            width: 100%;
+        }
+
+        .homepage .block-title {
+            text-transform: uppercase;
+            color: #e6b91d;
+            font-weight: 700;
+            line-height: 1.3;
+            font-size: 36px;
+        }
+
+        .section-3 .block-tieuchi .info-block .feed-back {
+            color: #6d6e71;
+            font-size: 19px;
+            line-height: 26px;
+            word-spacing: -2px;
+        }
+
+        .homepage .logo-title {
+            text-transform: uppercase;
+            color: #e6b91d;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            font-size: 25px;
+        }
+    }
+
+    @@media (min-width: 1024px) {
+
+        .homepage .section-2 .img-list .item span.image-title {
+            display: block;
+            margin: 5px 0 0;
+            color: #a99011;
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .box-img {
+            padding: 0 25px;
+        }
+        /*.homepage .section-2 .item-desc a {
+            pointer-events: none;
+        }*/
+    }
+    /*@@media (max-width:1023){
+        .homepage .section-2 .img-list .item a {
+            pointer-events: none;
+        }
+    }*/
+    @@media (max-width: 992px) and (min-width: 768px) {
+        .homepage .section-2 .item-desc .item-title {
+            display: block;
+            margin: 2% 0 0;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+            color: #e28a06;
+            margin-bottom: 5px;
+        }
+
+        .homepage .section-2 .s2-images-wrap {
+            position: relative;
+            width: 70%;
+            max-width: 774px;
+            margin: 0 auto;
+        }
+
+        .title-tieuchi {
+            text-align: center;
+        }
+
+        .homepage .block-title {
+            text-transform: uppercase;
+            color: #e6b91d;
+            font-weight: 700;
+            line-height: 1.3;
+            font-size: 27px;
+        }
+
+        .homepage .logo-title {
+            text-transform: uppercase;
+            color: #e6b91d;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .homepage .section-2 .img-list .item span.image-title {
+            display: block;
+            margin: 5px 0 0;
+            color: #a99011;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .homepage .section-2 .img-list .item, .itema {
+            display: inline;
+            position: absolute;
+            cursor: pointer;
+            width: 30%;
+            transition: transform 0.3s ease;
+        }
+
+        .img-gioithieu-style {
+            padding: 2px;
+            border: 0.1em solid #fae6a6;
+            box-shadow: 0px 0px 5px 0px #fae6a6;
+            width: 100%;
+        }
+
+        #section-3 {
+            background-image: url('/UITheme/assets/images/imgroyalspa/home/Y KIEN KHACH HANG - PC.jpg');
+            background-size: contain;
+        }
+
+        .box-img {
+            padding: 1px 85px;
+        }
+
+        .homepage .section-2 .item-desc .text-desc {
+            text-align: justify;
+            vertical-align: middle;
+            margin: 10px 20px;
+        }
+    }
+
+    @@media (min-width: 1024px) and (max-width: 1366px) {
+        .title-tieuchi {
+            text-align: center;
+        }
+
+        .box-img {
+            padding: 0px 75px;
+        }
+
+        .item3 br {
+            display: none;
+        }
+    }
+
+    @@media (max-width: 767px) {
+        .homepage .section-2 .item-desc {
+            position: absolute;
+            width: 65%;
+            top: 26%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: black;
+            display: none;
+            font-size: 8px;
+            font-weight: 400;
+        }
+
+            .homepage .section-2 .item-desc .item-title {
+                display: block;
+                margin: 2% 0 0;
+                font-size: 10px;
+                font-weight: 700;
+                line-height: 1.2;
+                text-transform: uppercase;
+                color: #e28a06;
+                margin-bottom: 5px;
+            }
+
+            .homepage .section-2 .item-desc .text-desc {
+                text-align: justify;
+                vertical-align: middle;
+                margin: 10px 20px;
+            }
+
+            .homepage .section-2 .item-desc a {
+                font-size: 10px;
+            }
+
+        .Kh_hailong {
+            margin: 10% 0 0 0;
+        }
+
+        .title-tieuchi {
+            text-align: center;
+        }
+
+        .homepage .section-2 .img-list .item span.image-title {
+            display: block;
+            margin: 5px 0 0;
+            color: #e28a06;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .homepage .block-title {
+            text-transform: uppercase;
+            color: #e6b91d;
+            font-weight: 700;
+            line-height: 1.3;
+            font-size: 20px;
+            margin-bottom: 3%;
+        }
+
+        .homepage .logo-title {
+            text-transform: uppercase;
+            color: #e6b91d;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .homepage .section-2 .img-list .item, .itema {
+            display: inline;
+            position: absolute;
+            cursor: pointer;
+            width: 33%;
+            transition: transform 0.3s ease;
+        }
+
+        .img-gioithieu-style {
+            padding: 2px;
+            border: 0.1em solid #fae6a6;
+            box-shadow: 0px 0px 5px 0px #fae6a6;
+            width: 60%;
+            margin: auto;
+        }
+
+        .section-3 .block-tieuchi .info-block .title-tieuchi h4 {
+            /*padding-top: 3%;*/
+            color: #b77e02;
+            text-transform: uppercase;
+            letter-spacing: 0px;
+            font-weight: lighter;
+            font-size: 13px;
+            text-shadow: 0px 0px 1px #b77e02;
+        }
+
+        .section-3 .block-tieuchi .info-block .feed-back {
+            color: #6d6e71;
+            font-size: 13px;
+            line-height: 20px;
+            word-spacing: -2px;
+        }
+
+        .section-3 .block-tieuchi .info-block .reviewers {
+            letter-spacing: 0px;
+            float: right;
+            color: #b77e02;
+            text-transform: capitalize;
+            margin-top: 0;
+            text-shadow: 0px 0px 1px #b77e02b0;
+            font-size: 14px;
+        }
+
+        #section-3 {
+            background-image: url(' /UITheme/assets/images/imgroyalspa/home/background-YKKH-mobile.jpg');
+        }
+
+        .section-2 {
+            background-image: url('/UITheme/assets/images/imgroyalspa/home/background-ly-do-chon-mobile-01.jpg');
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+
+    .homepage .section-2 .s2-images-wrap {
+        position: relative;
+        width: 70%;
+        max-width: 774px;
+        margin: 0 auto;
+    }
+
+    .homepage .section-2 .s2-main-img {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .img-fluid {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    @@media (max-width: 320px) {
+        .homepage .section-2 .item-desc a {
+            font-size: 6px;
+        }
+    }
+
+    @@media (min-width: 321px) and (max-width: 500px) {
+        .homepage .section-2 .item-desc a {
+            font-size: 7px;
+        }
+    }
+
+    @@media (min-width: 500px) and (max-width: 767px) {
+        .homepage .section-2 .item-desc a {
+            font-size: 10px;
+        }
+    }
+
+    @@media (min-width: 678px) and (max-width: 992px) {
+        .homepage .section-2 .item-desc a {
+            font-size: 13px;
+        }
+    }
+
+    .homepage .section-2 .item-desc-list-pc .item-desc .text-desc {
+        text-align: justify;
+    }
+
+    .homepage .section-2 .item-desc-list .item-desc .text-desc {
+        text-align: justify;
+    }
+</style>
+
+<div id="services"></div>
+<div class=" container-fluid homepage">
+
+    <div class="row section section-2">
+        <div class="row">
+            <div style="margin-top:2%" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" align="center">
+                <h3 class="avobold block-title section2-title">Lý do chọn</h3>
+                <h4 class="logo-title">Thẩm mỹ viện Sao Hà Thành</h4>
+            </div>
+        </div>
+        <div class="s2-images-wrap row">
+            @*<img class="hidden-sm-down img-fluid s2-main-img" src="/UITheme/assets/images/imgroyalspa/home/background-ly-do-chon - PC-01.jpg" alt="Section 2 model">*@
+            <img class="img-fluid hidden-sm-down s2-model" alt="Thẩm mỹ viện Sao Hà Thành" src="/UITheme/assets/images/imgroyalspa/home/doi-ngu-bs.png" style="display: block; opacity: 1;">
+            <ul class="img-list for-desktop hidden-sm-down">
+                <a href="https://saohathanh.com/gioi-thieu/gioi-thieu-tham-my-vien-sao-ha-thanh.html">
+                    <li data-desc="s2_desc_1" class="item item1">
+                        <div class="s2_desc_img img-circle">
+                            <img class="img-circle img-fluid" alt="An toàn là số 1" src="/UITheme/assets/images/imgroyalspa/home/an-toan-la-so-1.jpg">
+                        </div>
+                        <span class="image-title">An toàn là số 1</span>
+                    </li>
+                </a>
+                <a href="https://saohathanh.com/gioi-thieu/dich-vu-noi-troi.html">
+                    <li data-desc="s2_desc_2" class="item item2">
+                        <div class="s2_desc_img">
+                            <img class="img-circle img-fluid" alt="An toàn là số 1" src="/UITheme/assets/images/imgroyalspa/home/dich-vu-dan-dau.jpg">
+                        </div>
+                        <span class="image-title">Dịch vụ dẫn đầu</span>
+                    </li>
+                </a>
+                <a href="https://saohathanh.com/gioi-thieu/gioi-thieu-cong-nghe-endo-s.html">
+                    <li data-desc="s2_desc_3" class="item item3">
+                        <div class="s2_desc_img">
+                            <img class="img-circle img-fluid" alt="An toàn là số 1" src="/UITheme/assets/images/imgroyalspa/home/cong-nghe-hieu-qua-nhat.jpg">
+                        </div>
+                        <span class="image-title">Công nghệ <br /> hiệu quả nhất</span>
+                    </li>
+                </a>
+                <a href="https://saohathanh.com/gioi-thieu/thiet-bi-tien-tien-nhat.html">
+                    <li data-desc="s2_desc_4" class="item item4">
+                        <div class="s2_desc_img">
+                            <img class="img-circle img-fluid" alt="An toàn là số 1" src="/UITheme/assets/images/imgroyalspa/home/thiet-bi-tien-tien.jpg">
+                        </div>
+                        <span class="image-title">Thiết bị tiên tiến nhất</span>
+                    </li>
+                </a>
+                <a href="https://saohathanh.com/gioi-thieu/thuong-hieu-uy-tin.html">
+                    <li data-desc="s2_desc_5" class="item item5">
+                        <div class="s2_desc_img">
+                            <img class="img-circle img-fluid" alt="An toàn là số 1" src="/UITheme/assets/images/imgroyalspa/home/thuong-hieu-uy-tin.jpg">
+                        </div>
+                        <span class="image-title">Thương hiệu uy tín</span>
+                    </li>
+                </a>
+                <li style="width:20%" data-desc="s2_desc_6" class="itema item6">
+                    <img class=" img-fluid" alt="Lý do chọn thẩm mỹ viện Sao Hà Thành" src="/UITheme/assets/images/imgroyalspa/home/Logo.png">
+                </li>
+            </ul>
+            <ul class="hidden-sm-down item-desc-list">
+                <li id="s2_desc_1" class="item-desc lead" style="display: none; opacity: 1;">
+                    <a href="https://saohathanh.com/gioi-thieu/gioi-thieu-tham-my-vien-sao-ha-thanh.html">
+                        <span class="item-title">An toàn là số 1</span>
+                        <p class="text-desc">
+                            Ekip bác sĩ và chuyên gia PTTM của Sao Hà Thành với hơn 16 năm kinh nghiệm, tu nghiệp ở Châu Âu, Mỹ, có thế mạnh trong phẫu thuật hút mỡ và nâng ngực. Các dịch vụ đại phẫu đều được phối hợp thực hiện tại các bệnh viện hàng đầu đạt chuẩn của Bộ Y Tế.
+                            @*Thẩm mỹ viện Sao Hà Thành là đơn vị được Sở Y tế cấp giấy phép hoạt động trong lĩnh vực phẫu thuật thẩm mỹ*@
+                        </p>
+                    </a>
+                </li>
+                <li id="s2_desc_2" class="item-desc lead" style="display: none; opacity: 1;">
+                    <a href="https://saohathanh.com/gioi-thieu/dich-vu-noi-troi.html">
+                        <span class="item-title">Dịch vụ nổi trội</span>
+                        <p style="margin-left: 15%;" class="text-desc">
+                            Là một địa chỉ đi đầu trong lĩnh vực chăm sóc sắc đẹp, thẩm mỹ viện Sao Hà Thành đã chinh phục lòng tin của đông đảo khách hàng trên toàn quốc bằng 4 loại hình dịch vụ làm đẹp chủ đạo:
+                            <br /> - Dịch vụ Hút mỡ, cấy mỡ Endo S
+                            <br /> - Dịch vụ Nâng ngực & mông Endo S
+                            <br />  - Dịch vụ Spa  trị liệu & Chăm sóc da công nghệ cao
+                            <br /> - Dịch vụ Nâng mũi, cắt mí & Thẩm mỹ khuôn mặt
+                        </p>
+                    </a>
+
+                </li>
+                <li id="s2_desc_3" class="item-desc lead" style="display: none; opacity: 1;">
+                    <a href="https://saohathanh.com/gioi-thieu/gioi-thieu-cong-nghe-endo-s.html">
+                        <span class="item-title">Giới thiệu công nghệ Endo-S</span>
+                        <p class="text-desc">
+                            Công nghệ Endo-S và uốn cơ tạo dáng Inner Tight là công nghệ xuất phát từ Đức và Châu Âu. Hút mỡ và  nội soi tạo dáng cho cơ, nâng đỡ cơ bụng... Đây là phương pháp chỉ có duy nhất tại Sao Hà Thành.
+                            Công nghệ nâng ngực nội soi Endo-S kết hợp U-Guide đảm bảo độ chính xác cao tới từng milimet.
+                        </p>
+                    </a>
+                </li>
+                <li id="s2_desc_4" class="item-desc lead" style="display: none; opacity: 1;">
+                    <a href="https://saohathanh.com/gioi-thieu/thiet-bi-tien-tien-nhat.html">
+                        <span class="item-title">Thiết bị tiên tiến nhất</span>
+                        <p class="text-desc">
+                            Thẩm mỹ viện Sao Hà Thành sở hữu những thiết bị tiên tiến hàng đầu đạt chứng chỉ FDA Hoa Kỳ như máy Laser, Thermage, Fractional CO2, Iontoson… Đặc biệt Sao Hà Thành đầu tư máy Plasma hỗ trợ phục hồi vết thương sau phẫu thuật, xâm lấn và phun xăm.
+                        </p>
+                    </a>
+
+                </li>
+                <li id="s2_desc_5" class="item-desc lead" style="display: none; opacity: 1;">
+                    <a href="https://saohathanh.com/gioi-thieu/thuong-hieu-uy-tin.html">
+                        <span class="item-title">Thương hiệu uy tín</span>
+                        <p class="text-desc">
+                            Thẩm mỹ viện Sao Hà Thành đã được Sở Y tế cấp giấy phép hoạt động trong lĩnh vực PTTM. Tất cả các ca PTTM đều được thực hiện tại bệnh viện Quốc tế. Thương hiệu có uy tín trong ngành thẩm mỹ và được cộng đồng khách hàng tin yêu.
+                        </p>
+                    </a>
+                </li>
+                @*<li id="s2_desc_6" class="item-desc lead" style="display: none; opacity: 1;">
+                        <a href="#">
+                            <span class="item-title">Thuận tiện cho khách hàng</span>Nhờ vào hệ thống quy mô nhất trên
+                            toàn quốc, trải rộng ở các thành phố lớn.
+                        </a>
+
+                    </li>*@
+            </ul>
+            <ul class="hidden-sm-down item-desc-list-pc">
+                <li id="s2_desc_1_pc" class="item-desc lead" style="display: none; opacity: 1;">
+                    <a href="https://saohathanh.com/gioi-thieu/gioi-thieu-tham-my-vien-sao-ha-thanh.html">
+                        <span class="item-title">An toàn là số 1</span>
+                        <p class="text-desc">
+                            Ekip bác sĩ và chuyên gia PTTM của Sao Hà Thành với hơn 16 năm kinh nghiệm, tu nghiệp ở Châu Âu, Mỹ, có thế mạnh trong phẫu thuật hút mỡ và nâng ngực. Các dịch vụ đại phẫu đều được phối hợp thực hiện tại các bệnh viện hàng đầu đạt chuẩn của Bộ Y Tế.
+                        </p>
+                    </a>
+                </li>
+                <li id="s2_desc_2_pc" class="item-desc lead" style="display: none; opacity: 1;">
+                    <a href="https://saohathanh.com/gioi-thieu/dich-vu-noi-troi.html">
+                        <span class="item-title">Dịch vụ nổi trội</span>
+                        <p style="margin-left: 15%;" class="text-desc">
+                            Là một địa chỉ đi đầu trong lĩnh vực chăm sóc sắc đẹp, thẩm mỹ viện Sao Hà Thành đã chinh phục lòng tin của đông đảo khách hàng trên toàn quốc bằng 4 loại hình dịch vụ làm đẹp chủ đạo:
+                            <br /> - Dịch vụ Hút mỡ, cấy mỡ Endo S
+                            <br /> - Dịch vụ Nâng ngực & mông Endo S
+                            <br />  - Dịch vụ Spa  trị liệu & Chăm sóc da công nghệ cao
+                            <br /> - Dịch vụ Nâng mũi, cắt mí & Thẩm mỹ khuôn mặt
+                        </p>
+                    </a>
+
+                </li>
+                <li id="s2_desc_3_pc" class="item-desc lead" style="display: none; opacity: 1;">
+                    <a href="https://saohathanh.com/gioi-thieu/gioi-thieu-cong-nghe-endo-s.html">
+                        <span class="item-title">Giới thiệu công nghệ Endo-S</span>
+                        <p class="text-desc">
+                            Công nghệ Endo-S và uốn cơ tạo dáng Inner Tight là công nghệ xuất phát từ Đức và Châu Âu. Hút mỡ và  nội soi tạo dáng cho cơ, nâng đỡ cơ bụng... Đây là phương pháp chỉ có duy nhất tại Sao Hà Thành.
+                            Công nghệ nâng ngực nội soi Endo-S kết hợp U-Guide đảm bảo độ chính xác cao tới từng milimet.
+                        </p>
+
+
+                    </a>
+                </li>
+                <li id="s2_desc_4_pc" class="item-desc lead" style="display: none; opacity: 1;">
+                    <a href="https://saohathanh.com/gioi-thieu/thiet-bi-tien-tien-nhat.html">
+                        <span class="item-title">Thiết bị tiên tiến nhất</span>
+                        <p class="text-desc">
+                            Thẩm mỹ viện Sao Hà Thành sở hữu những thiết bị tiên tiến hàng đầu đạt chứng chỉ FDA Hoa Kỳ như máy Laser, Thermage, Fractional CO2, Iontoson… Đặc biệt Sao Hà Thành đầu tư máy Plasma hỗ trợ phục hồi vết thương sau phẫu thuật, xâm lấn và phun xăm.
+                        </p>
+                    </a>
+
+                </li>
+                <li id="s2_desc_5_pc" class="item-desc lead" style="display: none; opacity: 1;">
+                    <a href="https://saohathanh.com/gioi-thieu/thuong-hieu-uy-tin.html">
+                        <span class="item-title">Thương hiệu uy tín</span>
+                        <p class="text-desc">
+                            Thẩm mỹ viện Sao Hà Thành đã được Sở Y tế cấp giấy phép hoạt động trong lĩnh vực PTTM. Tất cả các ca PTTM đều được thực hiện tại bệnh viện Quốc tế. Thương hiệu có uy tín trong ngành thẩm mỹ và được cộng đồng khách hàng tin yêu.
+                        </p>
+                    </a>
+                </li>
+                @*<li id="s2_desc_6" class="item-desc lead" style="display: none; opacity: 1;">
+                        <a href="#">
+                            <span class="item-title">Thuận tiện cho khách hàng</span>Nhờ vào hệ thống quy mô nhất trên
+                            toàn quốc, trải rộng ở các thành phố lớn.
+                        </a>
+
+                    </li>*@
+            </ul>
+            @*<a href="https://ppp.com.vn/gioi-thieu/#section-3" class="ppp-btn more-btn s2-more-btn">
+                    <span>Tìm hiểu thêm về PPP</span>
+                </a>*@
+        </div>
+    </div>
+    @*<div class="box-service-m" style="display:none">
+            <a href="https://saohathanh.com/gioi-thieu.html"> <img src="/Imgs/Banners/lydochon_m.jpg" /></a>
+        </div>*@
+
+
+    @*<div class="box-service">
+            <img src="/Imgs/Banners/ykienkhachhang.jpg" />
+        </div>
+        <div class="box-service-m" style="display:none;margin-bottom:20px">
+            <img src="/Imgs/Banners/ykienkhachhang_m.jpg" />
+        </div>*@
+    <div class="row" id="section-3">
+        <div class="container-fluid row section-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 Kh_hailong" align="center">
+                        <h3 class="avobold block-title section2-title">Khách hàng hài lòng</h3>
+                    </div>
+                </div>
+                <div class="row s3-tieuchi for-desktop hidden-sm-down">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 block-tieuchi">
+                        <div class="row">
+                            <div class="col-xl-5 col-lg-5 offset-lg-0 col-md-10 offset-md-1 box-img">
+                                <div class="img-gioithieu-style img-circle">
+                                    <img class="img-fluid img-circle " alt="Hiệu quả rõ rệt và ổn định" src="/UITheme/assets/images/imgroyalspa/home/nang-nguc-lep-01.jpg">
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-7 offset-lg-0 col-md-10 offset-md-1">
+                                <div class="info-block">
+                                    <div class="title-tieuchi">
+
+                                        <h4>Nâng ngực lép</h4>
+                                    </div>
+                                    <div class="feed-back"> <i>"Sau khi nâng ngực mình tự tin hơn rất nhiều, giờ không bị ông xã gọi là ngực lép nữa rồi. Mình rất hạnh phúc!"</i> </div>
+                                    <h4 class="reviewers"><i>Chị Thanh</i></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 block-tieuchi">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 offset-lg-0 col-md-10 offset-md-1 box-img">
+                                <div class="img-gioithieu-style img-circle">
+                                    <img class="img-fluid img-circle" alt="Tuyệt đối an toàn" src="/UITheme/assets/images/imgroyalspa/home/nang-nguc-sa-tre-01.jpg">
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-7 offset-lg-0 col-md-10 offset-md-1">
+                                <div class="info-block">
+                                    <div class="title-tieuchi">
+
+                                        <h4>Nâng ngực sa trễ</h4>
+                                    </div>
+                                    <div class="feed-back"> <i>"Sau khi được bác sĩ tư vấn đặt túi nâng kết hợp treo sa trễ, hiện ngực mình đã căng tròn, đẹp tự nhiên."</i></div>
+                                    <h4 class="reviewers"><i>Chị Hạnh</i></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-5 col-md-6 col-xs-12 block-tieuchi">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 offset-lg-0 col-md-10 offset-md-1 box-img">
+                                <div class="img-gioithieu-style img-circle">
+                                    <img class="img-fluid img-circle" alt="Thương hiệu uy tín" src="/UITheme/assets/images/imgroyalspa/home/hut-mo-bung-01.jpg">
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-7 offset-lg-0 col-md-10 offset-md-1">
+                                <div class="info-block">
+                                    <div class="title-tieuchi">
+
+                                        <h4>Hút mỡ bụng</h4>
+                                    </div>
+                                    <div class="feed-back"> <i>"Cảm ơn Sao Hà Thành giúp mình xử lý rổ mỡ thừa nhiều năm và có được vòng eo đồng hồ cát như ước mơ"</i></div>
+                                    <h4 class="reviewers"><i>Chị Hằng</i></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 block-tieuchi">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 offset-lg-0 col-md-10 offset-md-1 box-img">
+                                <div class="img-gioithieu-style img-circle">
+                                    <img class="img-fluid img-circle" alt="Phác đồ trị liệu độc quyền" src="/UITheme/assets/images/imgroyalspa/home/hut-mo-dui-01.jpg">
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-7 offset-lg-0 col-md-10 offset-md-1">
+                                <div class="info-block">
+                                    <div class="title-tieuchi">
+                                        <h4>Hút mỡ đùi</h4>
+                                    </div>
+                                    <div class="feed-back"> <i>"Quả thật mình không hề hối hận khi quyết định hút mỡ đùi, bây giờ mình tự tin diện váy ngắn khoe chân thon rồi."</i></div>
+                                    <h4 class="reviewers"><i>Chị Thảo</i></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 block-tieuchi">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 offset-lg-0 col-md-10 offset-md-1 box-img">
+                                <div class="img-gioithieu-style img-circle">
+                                    <img class="img-fluid img-circle" alt="Dịch vụ đa dạng" src="/UITheme/assets/images/imgroyalspa/home/nang-mui-01.jpg">
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-7 offset-lg-0 col-md-10 offset-md-1">
+                                <div class="info-block">
+                                    <div class="title-tieuchi">
+                                        <h4>Nâng mũi</h4>
+                                    </div>
+                                    <div class="feed-back"> <i>"Làm mũi xong lộc lá ập đến. Mình chốt nhà, chốt chung cư, biệt thự liên tục. Cảm ơn Sao Hà Thành.”</i></div>
+                                    <h4 class="reviewers"><i>Chị Thương</i></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12 block-tieuchi">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5 offset-lg-0 col-md-10 offset-md-1 box-img">
+                                <div class="img-gioithieu-style img-circle">
+                                    <img class="img-fluid img-circle" alt="Thuận tiện cho khách hàng" src="/UITheme/assets/images/imgroyalspa/home/tri-da-mun-01.jpg">
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-7 offset-lg-0 col-md-10 offset-md-1">
+                                <div class="info-block">
+                                    <div class="title-tieuchi">
+                                        <h4>Trị da mụn</h4>
+                                    </div>
+                                    <div class="feed-back"><i>"Mới 4 buổi điều trị mụn tại Sao Hà Thành, da mình đã cải thiện đáng kể. Bác sĩ tận tâm, chi phí hợp lý!"</i></div>
+                                    <h4 class="reviewers"><i>Chị Hòa</i></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Block các tiêu chí của PPP Clinic Desktop -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #services {
+        position: absolute;
+        margin-top: -70px;
+    }
+
+    .box-service img, .box-service-m img {
+        width: 100%;
+    }
+
+    .box-service-m a {
+        display: block;
+    }
+
+    .hm-features {
+        padding-top: 0 !important;
+    }
+
+    @@media (max-width:767px) {
+        .box-service {
+            display: none !important;
+        }
+
+        .box-service-m {
+            display: block !important;
+        }
+    }
+</style>
+<script>
+    var width = $(window).width();
+    //console.log(width);
+    var Id = '';
+    if (width < 1366) {
+        var contents = $('.homepage .s2-images-wrap .item-desc-list .item-desc');
+
+        $(".homepage .section-2 .img-list a").each(function () {
+            $(this).attr("onclick", "return false;");
+        });
+    }
+    else {
+        Id = '_pc';
+        var contents = $('.homepage .s2-images-wrap .item-desc-list-pc .item-desc');
+
+        $(".homepage .section-2 .item-desc a").each(function () {
+            $(this).attr("onclick", "return false;");
+        });
+    }
+   // console.log(contents);
+    var images = $('.homepage .s2-images-wrap .img-list .item');
+  //  console.log(images);
+    images.hover(function () {
+        //alert(2);
+        var descID = $(this).attr('data-desc');
+        //console.log(descID);
+        $('.homepage .s2-model').stop().fadeOut(200);
+        $('#' + descID + Id).stop().fadeIn(200);
+        //
+        $(this).addClass('active');
+    }, function () {
+        $('.homepage .s2-model').stop().fadeIn(200);
+        images.removeClass('active');
+        contents.stop().fadeOut(200);
+    });
+</script>

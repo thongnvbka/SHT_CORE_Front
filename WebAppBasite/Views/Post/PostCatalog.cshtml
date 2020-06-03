@@ -1,0 +1,119 @@
+﻿
+@model WebAppBasite.Models.NewsViewModels.NewsCategoriesViewModels
+@using WebAppBasite.Common.Lib
+@{
+    ViewData["Title"] = "NewsCatalog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs-wrapper" id="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><span>Trang chủ</span></li>
+
+            <li class="active"><span>@Model.Category.TenDanhMuc</span></li>
+        </ol>
+    </div>
+</div>
+<div class="detail catalog">
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-xs-12 main-catalog">
+            <div class="col-md-9 col-xs-12 col-md-push-3 box-content">
+                <h1 class="title-detail">Tin tức và sự kiện</h1>
+                <p>
+                    Phun xăm môi hiện đang là trào lưu hot của các chị em vì màu sắc đa dạng, độ bền màu cao mang lại vẻ đẹp tự nhiên, tươi tắn cho gương mặt. TMV Sao Hà Thành đã tổng hợp một số câu hỏi thường gặp nhất về phun xăm môi để giải đáp thắc mắc của chị em
+                </p>
+                <div class="list-catalog">
+                    @foreach (var item in Model.Data.Results)
+                    {
+                        var link = "/" + item.cate_slug + "/" + item.Slug + ".html";
+                        <div class="row catalog-item">
+                            <div class="col-md-4 col-sm-3 col-xs-12">
+                                <a href="@link"> @Html.Raw(SUtility.GetThumbNail(item.Title, item.Thumbnail, "368x207"))</a>
+
+                            </div>
+                            <div class="col-md-8 col-sm-9 col-xs-12">
+                                <h5> <a href="@link">@item.Title</a></h5>
+                                <div class="post_info ">
+                                    <span class=""><i class="fa fa-calendar" aria-hidden="true"></i>Ngày đăng: @Clibs.UnixTimeStampToDateTime(double.Parse(item.CreatedAt.ToString())).ToString("HH:mm dd/MM/yyyy")</span>
+                                    <span class=""><i class="fa fa-eye"></i> Luợt xem :@item.view_total</span>
+                                </div>
+                                <div class="sapo">
+                                    @item.Summary
+                                </div>
+                                <div class="link-cat"><a href="@link">Chi tiết</a> </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                @(await Component.InvokeAsync("Pager", Model.Data))
+            </div>
+
+            <div class="col-md-3 col-md-pull-9 col-xs-12">
+                <div class="side-menu">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <div class="brand-wrapper">
+                                <!-- Hamburger -->
+                                <div class="brand-name-wrapper">
+                                    Câu chuyện khách hàng
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Main Menu -->
+                        <div class="side-menu-container">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#"> Video Khách hàng</a></li>
+                                <li><a href="#"> Hình ảnh khách hàng</a></li>
+                                <li><a href="#"> Tâm sự khách hàng</a></li>
+                                <!-- Dropdown-->
+                                <li class="panel panel-default" id="dropdown">
+                                    <a data-toggle="collapse" href="#dropdown-lvl1">
+                                        Tin tức <span class="caret"></span>
+                                    </a>
+                                    <!-- Dropdown level 1 -->
+                                    <div id="dropdown-lvl1" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul class="nav navbar-nav">
+                                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Kiến thúc làm đẹp</a></li>
+                                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Sự kiện nổi bật Sao Hà Thành</a></li>
+                                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Lời khuyên của chuyên gia</a></li>
+                                                <!-- Dropdown level 2 -->
+                                                @*<li class="panel panel-default" id="dropdown">
+                                                        <a data-toggle="collapse" href="#dropdown-lvl2">
+                                                            <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+                                                        </a>
+                                                        <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                                            <div class="panel-body">
+                                                                <ul class="nav navbar-nav">
+                                                                    <li><a href="#">Link</a></li>
+                                                                    <li><a href="#">Link</a></li>
+                                                                    <li><a href="#">Link</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>*@
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{ 
+<script>
+
+    </script>
+}
+
+

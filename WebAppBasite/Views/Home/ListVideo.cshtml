@@ -1,0 +1,322 @@
+﻿
+@{
+    ViewData["Title"] = "ListVideo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://www.youtube.com/player_api"></script>
+@section styles{
+    <style>
+        img {
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 100%;
+            height: auto;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        [type=text] {
+            width: auto;
+        }
+
+        .mg-l-r-0 {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
+        .slider1 {
+        }
+
+        .carousel-cell {
+            width: 100%;
+            height: 200px;
+            margin-right: 10px;
+            background: #212121;
+            border-radius: 5px;
+            counter-increment: carousel-cell;
+        }
+
+            /* cell number */
+
+            .carousel-cell:before {
+                display: none;
+            }
+
+    
+
+        .carousel-nav .carousel-cell {
+            height: 80px;
+            width: 100px;
+        }
+
+            .carousel-nav .carousel-cell:before {
+                font-size: 50px;
+                line-height: 80px;
+            }
+
+        #video-popup-content {
+            min-width: 600px;
+            height: 500px;
+        }
+        .modal-content {
+            background: transparent;
+            border-radius: 10px;
+            border: none;
+        }
+        .modal-body {
+            position: relative;
+            padding: 15px;
+            height: 500px;
+        }
+        .modal-content {
+            box-shadow: 0 5px 0px rgba(0, 0, 0, 0);
+        }
+        .playIcon {
+            display: table;
+            margin: 0 auto 10px;
+            max-width: 550px;
+            position: relative;
+            cursor: pointer;
+        }
+        .clip__pic {
+            position: relative;
+            width: 100%;
+            margin: 0 auto 5px;
+            overflow: hidden;
+            display: block;
+            border-radius: 0 4px 4px;
+            transition: .3s;
+        }
+        .playIcon-sm:before {
+            width: 35px;
+            height: 35px;
+            left: calc(50% - 20px);
+            top: calc(50% - 16px);
+        }
+        .clip__pic:hover {
+            box-shadow: 1px 1px 16px rgba(0,0,0,.6);
+        }
+        .clip__name {
+            font-size: 14px;
+            display: block;
+            overflow: hidden;
+            height: 28px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #000;
+            font-weight: 500;
+        }
+        .playIcon:before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 1;
+            background-image: url('/img/icon-video.png');
+            transition: .3s ease-out;
+            background-size: 100%;
+            width: 50px;
+            height: 50px;
+            left: calc(50% - 23px);
+            top: calc(50% - 23px);
+            transition: .3s;
+            opacity: 1;
+        }
+    </style>
+}
+<div class="breadcrumbs-wrapper" id="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><span>Trang chủ</span></li>
+
+            <li class="active"><span>Video khách hàng </span></li>
+        </ol>
+    </div>
+</div>
+<div class="cate-1 ">
+    <div class="container">
+        <div class="col-sm-12 col-md-12">
+            <div class="text-center featured-text">
+                <h2> Video khách hàng</h2>
+            </div>
+            <div class="video-pc tabbable tabbable-tabdrop">
+                <ul class="nav nav-pills">
+                    <li class="active">
+                        <a href="#tab11" data-toggle="tab" aria-expanded="false">Nâng ngực</a>
+                    </li>
+                    <li class="">
+                        <a href="#tab12" data-toggle="tab" aria-expanded="false">Hút mỡ</a>
+                    </li>
+                    <li class="">
+                        <a href="#tab13" data-toggle="tab" aria-expanded="false">Da CNC</a>
+                    </li>
+                    <li class="">
+                        <a href="#tab14" data-toggle="tab" aria-expanded="true">PRP+</a>
+                    </li>
+                    <li class="">
+                        <a href="#tab15" data-toggle="tab" aria-expanded="false">SPA</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab11">
+
+                    </div>
+                    <div class="tab-pane" id="tab12">
+                        <p> Howdy, I'm in Section 2. </p>
+                    </div>
+                    <div class="tab-pane" id="tab13">
+                        <p> Howdy, I'm in Section 3. </p>
+                    </div>
+                    <div class="tab-pane " id="tab14">
+                        <p> Howdy, I'm in Section 4. </p>
+                    </div>
+                    <div class="tab-pane" id="tab15">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container site1Main videopage">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="site1-bg">
+                    <div id="clipx" class="clipbox">
+                        <div class="sectionvideo-38 cateMain-1">
+                            <div class="clip">
+                                <div class="col-md-3 clip__item videoplay show" data-id="00giGo8tEHo" data-title="Nhật ký sửa mũi hếch của Mai Anh">
+                                    <a data-video="EH0EJ2_5G50" href="javascript:void(0)" class="clip__thumb img video-popup">
+                                        <div class="clip__pic playIcon playIcon-sm">
+                                            <img class="img img-responsive" src="~/img/bs-1.png" />
+                                        </div>
+                                        <div class="clip__name">test-1</div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 clip__item videoplay show" data-id="f4eYmIuEpks" data-title="Nhật ký sửa mũi hếch của Mai Anh">
+                                    <a data-video="oz7OEKCeVE0" href="javascript:void(0)" class="clip__thumb img video-popup">
+                                        <div class="clip__pic playIcon playIcon-sm">
+                                            <img class="img img-responsive" src="~/img/bs-1.png" />
+                                        </div>
+                                        <div class="clip__name">test-2</div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 clip__item videoplay show" data-id="pfuRnThSF6s" data-title="Nhật ký sửa mũi hếch của Mai Anh">
+                                    <a data-video="oz7OEKCeVE0" href="javascript:void(0)" class="clip__thumb img video-popup">
+                                        <div class="clip__pic playIcon playIcon-sm">
+                                            <img class="img img-responsive" src="~/img/bs-1.png" />
+                                        </div>
+                                        <div class="clip__name">test-3</div>
+                                    </a>
+                                </div>
+                                <div class="col-md-3 clip__item videoplay show" data-id="pfuRnThSF6s" data-title="Nhật ký sửa mũi hếch của Mai Anh">
+                                    <a data-video="EH0EJ2_5G50" href="javascript:void(0)" class="clip__thumb img video-popup">
+                                        <div class="clip__pic playIcon playIcon-sm">
+                                            <img class="img img-responsive" src="~/img/bs-1.png" />
+                                        </div>
+                                        <div class="clip__name">test-3</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="videoPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="video-popup-content" id="player">
+                       
+                    </div>
+                </div>
+       
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+<script>
+
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    }
+
+    var player;
+    function init_player(id) {
+
+        if (typeof YT === 'undefined' && typeof window.loadingPlayer === 'undefined') {
+            // Prevents Ready Event from being called twice
+            window.loadingPlayer = true;
+
+
+            // Creates deferred so, other players know when to wait.
+            window.dfd = $.Deferred();
+            window.onYouTubeIframeAPIReady = function () {
+                window.onYouTubeIframeAPIReady = null;
+                window.dfd.resolve("done");
+            };
+        } else if (typeof YT === 'object') {
+            if (typeof YT.Player !== 'undefined') {
+
+               
+                player = new YT.Player('player', {
+                    height: '100%',
+                    width: '100%',
+                    videoId: id,
+                    playerVars: { rel: 0 },
+                    events: {
+                        'onReady': onPlayerReady
+                    }
+                });
+            } else {
+                window.dfd = $.Deferred();
+                window.onYouTubeIframeAPIReady = function () {
+                    window.onYouTubeIframeAPIReady = null;
+                    window.dfd.resolve("done");
+
+                     player = new YT.Player('player', {
+                        height: '100%',
+                        width: '100%',
+                         videoId: id,
+                        playerVars: { rel: 0 },
+                        events: {
+                            'onReady': onPlayerReady
+                        }
+                    });
+                };
+            }
+
+        } else {
+            window.dfd.done(function (name) {
+                alert(3);
+            });
+        }
+    }
+    function change_yt(id) {
+        player.loadVideoById(id);
+    }
+    $(document).ready(function () {
+
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        init_player('');
+        $(".video-popup").click(function () {
+           // alert(("#videoPopup").length);
+            if (0 < ("#videoPopup").length) {
+                var b = $(this).attr("data-video");
+                change_yt(b)
+                $("#videoPopup").modal("show");
+            }
+        });
+
+    }, false);
+
+
+    </script>
+}
+

@@ -1,0 +1,267 @@
+﻿@using System.Data
+@using WebAppBasite.App_Code
+@model WebAppBasite.Models.ViewModel.HomeViewModels
+
+
+<div class="panel-menu" id="panelMenu" style="display:none;">
+    <nav class="panel-menu-nav">
+        <header class="panel-menu-header">
+            <h1>
+                <img style="height: 26px;float: left;" class="logo svg img-responsive" src="/UITheme/assets/images/imgroyalspa/logo3.png" alt="sao ha thanh">
+            </h1>
+        </header>
+        <div class="panel-menu-content">
+            <a class="h4 panel-menu-heading js-menu-title" href="#" data-title="Menu"><span class="icon-back pe-7s-angle-left"></span></a>
+            <ul class="panel-list">
+                @{ var cates = Model.getMenu.Where(x => x.idDanhMucCha == 0 && x.LoaiDanhMuc == 1);}
+                @foreach (var cate in cates)
+                {
+                    var childCategory = Model.getMenu.Where(x => x.idDanhMucCha == cate.id);
+                    var url = "/" + cate.MaDanhMuc + ".html";
+                    <li class="panel-list__item">
+                        <a href="@url">
+                            @if (!string.IsNullOrWhiteSpace(cate.Thumbnail))
+                            {
+                                <div class="icon_or_image">
+                                    @if (cate.Type == 1)
+                                    {
+                                        <img src="@(WebAppBasite.App_Code.PLibs.GetAdminUrl() + cate.Thumbnail )" />
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-fw fa-@cate.Thumbnail"></i>
+                                    }
+
+                                </div>
+                            }
+                            <span>@cate.TenDanhMuc</span>
+                        </a>
+                        <a class="row_menu" href="@url">
+
+                            @if (childCategory.Count() > 0)
+                            {
+                                <span class="icon-next pe-7s-angle-right"></span>
+                            }
+                        </a>
+                        @if (childCategory.Count() > 0)
+                        {
+                            <ul class="panel-list__next">
+                                @foreach (var child in childCategory)
+                                {
+                                    var link = "/" + child.MaDanhMuc + ".html";
+                                    <li class="panel-list__item">
+                                        <a href="@(string.IsNullOrEmpty(child.Url)?link:child.Url)"><span>@child.TenDanhMuc</span></a>
+                                    </li>
+                                }
+
+                            </ul>
+                        }
+                    </li>
+                }
+
+                <li class="panel-list__item">
+                    <a class="" href="#thu_vien_anh">
+                        <div class="icon_or_image">
+                            <img src="https://admin.saohathanh.com/UserData/Share/Images/20190921_image.png" />
+                        </div>
+                        <span>Thư viện ảnh</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="panel-menu-footer">
+            <ul class="social-list">
+                @*<li><a class="fa-stack fa-lg" href="@Model.InfoContact.FirstOrDefault().Instagram"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-instagram fa-stack-1x fa-inverse"></i></a></li>
+                    <li><a class="fa-stack fa-lg" href="@Model.InfoContact.FirstOrDefault().Facebook"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x fa-inverse"></i></a></li>
+                    <li><a class="fa-stack fa-lg" href="@Model.InfoContact.FirstOrDefault().Twitter"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x fa-inverse"></i></a></li>*@
+
+            </ul>
+        </div>
+    </nav>
+</div>
+<!--           end mobile menu           /-->
+<!--           = Page Header           /-->
+<header class="page-header" id="panelHeader">
+    <nav style="position: fixed;" class="navbar navbar-default navbar-fixed-top" id="navbar ">
+
+        <div class="navbar__topline">
+            <div class="navbar-header container">
+                <a id="logo-mobile" class="navbar-brand" style="display:none;" href="/"><img style=" width: 159px" class="logo svg img-responsive" src="~/UITheme/assets/images/imgroyalspa/logo3.png" alt="sao ha thanh" /></a>
+                <a class="menu-trigger visible-xs" id="trigger" href="#" role="button"><span class="menu-trigger__elem"></span></a>
+                <span class=" m-search">
+                    @*<a href="tel:0833.52.8888">
+                            <i class="fa fa-phone-square" aria-hidden="true"></i>
+                        </a>*@
+                    <i class="fa fa-search button--search" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="container menumore" style="display:none">
+                <div class="mcol-1">
+                    <a target="_blank" href="https://www.facebook.com/thammy.saohathanh/"><span class="top-icon t-fb"></span></a>
+                    <a target="_blank" href="https://www.youtube.com/channel/UCePTGyUX_iNHPHgG6LVmhtA"><span class="top-icon t-yt"></span></a>
+                    <a target="_blank" href="https://www.instagram.com/thammyviensaohathanh/"><span class="top-icon t-pt"></span></a>
+                    @*<a href="https://www.pinterest.com/tmvsaohathanhsocial/th%E1%BA%A9m-m%E1%BB%B9-vi%E1%BB%87n-sao-h%C3%A0-th%C3%A0nh/"><span class="top-icon t-pt2"></span></a>*@
+                </div>
+
+                <div class="mcol-2">
+                    <div class="dkkm-mobile" data-toggle="modal" data-target="#myModal" data-placement="left" title="Nhấn để vào đặt lịch">Đăng kí khuyến mãi</div>
+                </div>
+                <div class="mcol-3 fhotline  ">
+                    <i class="fa fa-phone" aria-hidden="true"></i> <span class="hl1">Hotline (24/7)</span>
+                    <a href="tel:@Model.InfoContact.FirstOrDefault().Phone.Replace(".", "")" class="hl2">@Model.InfoContact.FirstOrDefault().Phone</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="navbar__menu">
+            <div class="container">
+                <div class="col-md-4">
+                    <a class="navbar-brand" href="/"><img style=" width: 180px" class="logo svg img-responsive" src="~/UITheme/assets/images/imgroyalspa/logo3.png" alt="sao ha thanh" /></a>
+                </div>
+                <div class="col-md-4 fhotline">
+                    <i class="fa fa-phone" aria-hidden="true"></i> <span class="hl1">Hotline (24/7)</span>
+                    <a style="font-size: 20px;" href="tel:@Model.InfoContact.FirstOrDefault().Phone.Replace(".", "")" class="hl2">@Model.InfoContact.FirstOrDefault().Phone</a>
+                </div>
+                <div class="col-md-4">
+                    <span class="dkkm-pc" data-toggle="modal" data-target="#myModal" data-placement="left" title="Nhấn vào đây để vào đặt lịch">Đăng kí khuyến mãi</span>
+
+                </div>
+                <div class="col-md-4 text-right">
+                    <a target="_blank" href="https://www.facebook.com/thammy.saohathanh/"><span class="top-icon t-fb"></span></a>
+                    <a target="_blank" href="https://www.youtube.com/channel/UCePTGyUX_iNHPHgG6LVmhtA"><span class="top-icon t-yt"></span></a>
+                    <a target="_blank" href="https://www.instagram.com/thammyviensaohathanh/"><span class="top-icon t-pt"></span></a>
+                    <a target="_blank" href="https://www.pinterest.com/tmvsaohathanhsocial/th%E1%BA%A9m-m%E1%BB%B9-vi%E1%BB%87n-sao-h%C3%A0-th%C3%A0nh/"><span class="top-icon t-pt2"></span></a>
+                    <span class="fa fa-search button--search" aria-hidden="true"><span>
+                </div>
+
+                @*<ul class="social-list pull-right hidden-xs">
+                        <li class="sdt">
+                            <i class="fa fa-search button--search" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                            <div class="sep11"></div>
+                            <div class="box-search">
+                                <label for="s"><span>Tìm kiếm</span></label>
+                                <input onkeypress="search()" type="text" name="s" class="txt-keyword" placeholder="Tìm kiếm" autocomplete="off">
+                                <a id="btnsearch" value="Tìm kiếm" onkeypress="search()" onclick="clickSearch()"><i class="fa fa-search"></i></a>
+                            </div>
+                        </li>
+                    </ul>*@
+            </div>
+            <div class="d-menu">
+                <ul class="nav navbar-nav navbar-menu hidden-xs ">
+                    @*<li>
+                            <a href="/" class="icon_home">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                            </a>
+                        </li>*@
+
+                    @foreach (var cate in Model.getMenu.Where(x => x.idDanhMucCha == 0 && x.LoaiDanhMuc == 1))
+                    {
+                        var url = "/" + cate.MaDanhMuc + ".html";
+                        var childCategory = Model.getMenu.Where(x => x.idDanhMucCha == cate.id);
+
+                        <li>
+                            <a href="@(string.IsNullOrEmpty(cate.Url)?url:cate.Url)">
+                                @*@if (!string.IsNullOrWhiteSpace(cate.Thumbnail))
+                                    {
+                                        <div>
+                                            @if (cate.Type == 1)
+                                            {
+                                                <img src="@(ViELearn.TinTuc.App_Code.PLibs.GetAdminUrl()+ cate.Thumbnail )" />
+                                            }
+                                            else
+                                            {
+                                                <i class="fa fa-fw fa-@cate.Thumbnail"></i>
+                                            }
+
+                                        </div>
+                                    }*@
+                                <span>@cate.TenDanhMuc</span>
+                                @if (childCategory.Count() > 0)
+                                {
+                                    <span class="fa fa-caret-down"></span>
+                                }
+                            </a>
+                            @if (childCategory.Count() > 0)
+                            {
+                                <ul class="dropdown-menu">
+                                    @foreach (var child in childCategory)
+                                    {
+                                        var link = "/" + child.MaDanhMuc + ".html";
+                                        <li>
+                                            <a class="" href="@(string.IsNullOrEmpty(child.Url)?link:child.Url)">
+                                                @child.TenDanhMuc
+                                            </a>
+                                        </li>
+                                    }
+
+                                </ul>
+                            }
+
+                        </li>
+                    }
+                    <li>
+                        <a class="" href="#thu_vien_anh">
+                            Thư viện ảnh
+                        </a>
+                    </li>
+
+                    @*<li class="sdt">
+                            <i class="fa fa-phone-square" aria-hidden="true"></i><span style=" font-size: 18px;">@Model.InfoContact.FirstOrDefault().Phone</span>
+
+                        </li>*@
+
+                </ul>
+
+
+
+
+            </div>
+
+        </div>
+
+        <div class="search-open-cover" style="display: none;">
+            <div class="search-open">
+                <input type="text" id="txtKeyword" class="form-control txt-keyword2" placeholder="" required>
+                <a onkeypress="search()" onclick="clickSearch2()" class="btn btn-primary" id="btnsearch">Tìm kiếm</a>
+            </div>
+        </div>
+    </nav>
+
+
+</header>
+
+<script type="text/javascript">
+
+    function clickSearch() {
+
+        window.location = "/tim-kiem.html?keyword=" + $(".txt-keyword").val();
+    }
+    function clickSearch2() {
+
+        window.location = "/tim-kiem.html?keyword=" + $(".txt-keyword2").val();
+    }
+
+    function search() {
+        $(".txt-keyword").keypress(function (event) {
+            if (event.which == 13) {
+
+                window.location = "/tim-kiem.html?keyword=" + $(".txt-keyword").val();
+            }
+
+        });
+    }
+
+    $(document).ready(function () {
+
+        search();
+        $(".button--search").click(function () {
+            $(this).toggleClass("is-active"),
+                $(".search-open-cover").slideToggle()
+        })
+
+    })
+</script>
+

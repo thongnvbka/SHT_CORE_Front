@@ -1,0 +1,50 @@
+﻿
+@model WebAppBasite.Models.ViewModel.HomeViewModels
+<style>
+    .instagram-top-list {
+        min-height: 200px;
+    }
+
+        .instagram-top-list a {
+            height: 78px;
+            width: 200px;
+        }
+</style>
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <!--           ¬ page-footer__contacts           /-->
+            <div class="col-sm-6 col-md-5 col-lg-5">
+                <h4 class="page-footer__title">Liên hệ</h4>
+                <ul style="font-family: 'Lato', sans-serif;" class="page-footer__list">
+                    <li>
+                        Điện thoại:  <a class="rs-number" href="javascript:void(0)">@Model.InfoContact.FirstOrDefault().Phone</a>
+                    </li>
+                    <li>
+                        <a class="rs-mail" href="javascript:void(0)">@Model.InfoContact.FirstOrDefault().Email </a>
+                    </li>
+                    <li> @Html.Raw(Model.InfoContact.FirstOrDefault().Address)</li>
+                </ul>
+            </div>
+            <!--           end page-footer__contacts           /-->
+            <!--           ¬ page-footer__instagram           /-->
+            <div class="col-sm-6 col-md-4 col-lg-7 page-footer__intstagram text-right">
+
+
+                <div class="instagram-top-list cf">
+                    <div class="fb-page" data-href="https://www.facebook.com/thammy.saohathanh" data-width="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/thammy.saohathanh/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/thammy.saohathanh/">Facebook của Thẩm mỹ viện Sao Hà Thành</a></blockquote></div>
+                </div>
+            </div>
+            <!--           end page-footer__instagram           /-->
+     
+            <!--           end page-footer__tags           /-->
+        </div>
+    </div>
+    <div class="page-footer__copyright">
+        <div class="container">© 2018 - Công ty cổ phần Sao Hà Thành</div>
+
+    </div>
+</footer>
+<a class="btn-call-now" href="tel:@Model.InfoContact.FirstOrDefault().Phone">
+    <i class="fa fa-phone"></i>
+</a>

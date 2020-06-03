@@ -1,0 +1,372 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model WebAppBasite.Models.ViewModel.HomeViewModels
+@using System.Data
+@using WebAppBasite.App_Code
+
+
+@section headermeta{
+    <meta property="og:url" content="http://saohathanh.com/@(Model.DetailNews.cate_slug)/@(Model.DetailNews.Slug).html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="@Model.DetailNews.Title" />
+    <title>@Model.DetailNews.Title</title>
+    <meta property="og:description" content="@Model.DetailNews.Summary" />
+    <meta property="og:image" content="@(PLibs.GetAdminUrl()+Model.DetailNews.Thumbnail)" />
+    <meta property="og:image:width" content="320">
+    <meta property="og:image:height" content="180">
+    <link href="http://saohathanh.com/@(Model.DetailNews.cate_slug)/@(Model.DetailNews.Slug).html" rel="canonical" />
+
+}
+<style>
+    .border-light {
+        border-color: #e0e0e0 !important;
+    }
+
+    .text-center {
+        text-align: center !important;
+    }
+
+    .p-5 {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 17px;
+        background-position: center center;
+        padding: 2rem 4rem !important;
+        background-image: url('/img/dang-ky-nhan-tu-van-pc-01.png');
+    }
+
+        .p-5:focus {
+            box-shadow: 0 0 0 transparent;
+            border-color: snow;
+        }
+
+    .border {
+        border: 1px solid #dee2e6 !important;
+    }
+
+    .mb-4, .my-4 {
+        margin-bottom: 1rem !important;
+        border: none !important;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    input {
+        overflow: visible;
+    }
+
+    .btn.btn-block {
+        margin: inherit;
+    }
+
+    button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+        cursor: pointer;
+    }
+
+    .btn-info {
+        color: #fff;
+        background-color: #33b5e5 !important;
+    }
+
+    .btn-form {
+        padding: 10px 60px;
+        background-color: #BD8E2D;
+        color: #fff;
+        border-radius: 3px;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 6px;
+        text-transform: uppercase;
+    }
+
+    .txt-lb {
+        float: left;
+        color: #58595b;
+        text-transform: uppercase !important;
+        letter-spacing: 1px;
+    }
+
+    .title-form {
+        text-transform: uppercase;
+        font-size: 26px;
+        font-weight: bold;
+        color: #702601;
+    }
+
+    .btn-text {
+        font-size: 17px;
+    }
+
+    .txt-phone {
+        text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+        color: #c97f2d;
+        font-size: 28px;
+        text-transform: uppercase;
+        font-weight: bold !important;
+    }
+
+    @@media (min-width: 320px) and (max-width: 767px) {
+        .title-form {
+            text-transform: uppercase;
+            font-size: 19px;
+        }
+
+        .txt-lb {
+            float: left;
+            color: #58595b;
+            text-transform: uppercase !important;
+            letter-spacing: 1px;
+            font-size: 15px;
+        }
+
+        .p-5 {
+            padding: 2rem 2rem !important;
+        }
+
+        .btn-form {
+            padding: 5px 30px;
+        }
+
+        .txt-phone {
+            font-size: 22px;
+        }
+    }
+    input.invalid, textarea.invalid {
+        border: 2px solid red;
+    }
+
+    input.valid, textarea.valid {
+        border: 2px solid green;
+    }
+
+    .error_show {
+        color: red;
+        margin-left: 10px;
+    }
+    @@media (max-width: 320px) {
+        .title-form {
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+    }
+</style>
+@section menuheader{
+    @await Component.InvokeAsync("Menu")
+}
+
+<div class="breadcrumbs-wrapper p-detail" id="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="active"><span><a href="/">Trang chủ</a></span></li>
+            <li class="active"><span><a href="/@(Model.DetailNews.cate_slug).html">@Model.DetailNews.TenDanhMuc</a></span></li>
+            @*<li class="active"><span>@Model.DetailNews.Title</span></li>*@
+        </ol>
+    </div>
+</div>
+<div class="content-grid  p-detail container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="room-gallery__title">@Model.DetailNews.Title</h2>
+            <h3>@Model.DetailNews.Summary</h3>
+
+            <div class="detail-content">
+                @Html.Raw(
+                            Model.DetailNews.FullContent
+                            .Replace("\\", "/")
+                            .Replace("\"/UserData/0", "\"" + PLibs.GetAdminUrl() + "/UserData/"+"0" )
+                            .Replace("; font-size: 16px;margin: auto; line - height: 20px !important;", "")
+                            )
+            </div>
+            <div class="list-type">
+                @*<h2 style="text-transform:uppercase">Dịch vụ khác</h2>
+            <ul>
+                @foreach (var item in listrelated)
+                {
+                    var url = "/" + item.cate_slug + "/" + item.Slug + ".html";
+                    <li><i class="icon-bullet"></i><a href="@url">@item.Title</a></li>
+                }
+            </ul>*@
+            </div>
+            <!-- Default form login -->
+
+            <!-- Default form login -->
+
+            @if (Model.listtagbyId.Count() > 0)
+            {
+                <div class="block_tag width_common">
+                    <div class="txt_tag"><i class="fa fa-tag" aria-hidden="true"></i>&nbsp;Tags</div>
+                    @foreach (var item in Model.listtagbyId)
+                    {
+                        var link = "/Tag/" + item.slug + ".html";
+                        <h5>
+                            <a href="@link" title="@item.name" class="tag_item">
+                                @item.name
+                            </a>
+                        </h5>
+                    }
+
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+<div style=" position: relative;
+        text-align: center;
+        font-size: 2.66667rem;
+        line-height: 1;
+            padding: 30px 0;
+        margin-top: 0;
+        margin-bottom: 1.66667rem;
+        font-weight: 700;
+        border-bottom: 1px solid #c6aa28"></div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+<script>
+
+     function validate(e) {
+       // alert(1)
+        e.preventDefault();
+        //event.preventDefault();
+         if ($('#fullname').val()=="") {
+           // bootbox.alert("Họ tên không được để trống");
+            $('#hoten-error').show();
+           // alert("a")
+
+         } else if ($('#phone').val()=="") {
+            $('#sdt-error').show();
+
+        }
+         else if ($('#service').val()=="") {
+            $('#service-error').show();
+        }
+        else if (isValidMobile($('#phone').val()) != "ok") {
+
+            $('#sdt-fomat').show().text(isValidMobile($('#phone').val()));
+        }
+        else {
+            $('#sdt-fomat').hide()
+             grecaptcha.execute();
+
+        }
+    }
+    $("#fullname").on("keyup", function () {
+        var value = $.trim($(this).val());
+        if (value) {
+            $('#hoten-error').hide();
+        } else {
+            $('#hoten-error').show();
+        }
+    });
+    $("#phone").on("keyup", function () {
+        var value = $.trim($(this).val());
+        if (value) {
+            $('#sdt-error').hide();
+
+            if (isValidMobile(value) != "ok") {
+                $('#sdt-fomat').show().text(isValidMobile(value))
+            }
+            else {
+                $('#sdt-fomat').hide()
+            }
+        } else {
+            $('#sdt-fomat').hide();
+            $('#sdt-error').show();
+        }
+    });
+    $("#service").on("keyup", function () {
+        var value = $.trim($(this).val());
+        if (value) {
+            $('#service-error').hide();
+        } else {
+            $('#service-error').show();
+        }
+    });
+   
+    function onload() {
+        var element = $('.btn-form');
+        element.onclick = validate;
+    }
+    $(document).ready(function () {
+        onload();
+    });
+
+
+
+    function send(token) {
+        var ho_ten = $('#fullname').val();
+        var sdt_lienhe = $('#phone').val();
+        var service = $('#service').val();
+
+        $.ajax({
+            data: {
+                ho_ten: ho_ten,
+                sdt: sdt_lienhe,
+                service: service
+            },
+            type: 'POST',
+            datatype: 'json',
+            //url: 'Home/SubmitComment',
+            url: '@Url.Action("SubmitReservation", "Home")',
+            success: function (response) {
+                if (response.status) {
+
+                    $('#fullname').val('');
+                    $('#phone').val('');
+                    $('#service').val('');
+                    bootbox.alert({
+                        message: "Bạn đã đăng ký thành công, chúng tôi sẽ liên hệ với bạn sau",
+                        callback: function () {
+                            window.location.reload();
+                        }
+                    })
+                }
+                else {
+                   
+                    //bootbox.alert({
+                    //    message: "Lỗi mạng, vui lòng thử lại!,ấn nút f5 để làm lại",
+                    //});
+                    alert(response.message)
+                }
+            },
+            error: function (response) {
+                alert(response.message)
+                //$('#myModal').hide();
+                //bootbox.alert({
+                //    message: "Lỗi mạng, vui lòng thử lại!,ấn nút f5 để làm lại",
+                //});
+            }
+        });
+    }
+
+        $('#phone').keypress(function (event) {
+            return isNumber(event, this)
+        });
+
+</script>
+
+
+
+
+

@@ -1,0 +1,212 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-WebAppBasite-80ABC7C2-C242-4144-B0BC-894CCF2EBF5B</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\**" />
+    <Content Remove="Areas\**" />
+    <EmbeddedResource Remove="Areas\**" />
+    <None Remove="Areas\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Content\js\jquery-1.10.2.min.js" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebAppBasite.Common\WebAppBasite.Common.csproj" />
+    <ProjectReference Include="..\WebAppBasite.DAL\WebAppBasite.DAL.csproj" />
+    <ProjectReference Include="..\WebAppBasite.Models\WebAppBasite.Models.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
+    <Folder Include="Models\ConfigModels\" />
+    <Folder Include="wwwroot\Content\Plugin\" />
+    <Folder Include="wwwroot\UITheme\assets\css\bootstrap-legacy\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="wwwroot\Content\css\bootstrap\css\bootstrap.css.map" />
+    <None Include="wwwroot\Content\css\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\Content\css\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\Content\css\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\Content\css\font-awesome\css\font-awesome.css.map" />
+    <None Include="wwwroot\Content\css\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\Content\css\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\Content\demo\scripts\gradient.svg" />
+    <None Include="wwwroot\Content\demo\scripts\jquery.carousel-1.1.min.js" />
+    <None Include="wwwroot\Content\demo\scripts\sample01.js" />
+    <None Include="wwwroot\Content\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\Content\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\Content\js\bootstrap.min.js" />
+    <None Include="wwwroot\Content\js\jquery.bxslider.js" />
+    <None Include="wwwroot\Content\js\main.js" />
+    <None Include="wwwroot\Content\js\plugin\owlcarousel\owl.carousel.js" />
+    <None Include="wwwroot\Content\js\plugin\owlcarousel\owl.carousel.min.js" />
+    <None Include="wwwroot\UITheme\assets\css\simple-line-icons.min.css.map" />
+    <None Include="wwwroot\UITheme\assets\fonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\UITheme\assets\fonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\UITheme\assets\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\UITheme\assets\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\UITheme\assets\fonts\fontawesome-webfont5b62.svg" />
+    <None Include="wwwroot\UITheme\assets\fonts\fontawesome-webfont5b62.woff2" />
+    <None Include="wwwroot\UITheme\assets\fonts\IcoMoon.svg" />
+    <None Include="wwwroot\UITheme\assets\fonts\Pe-icon-7-strokebb1d.svg" />
+    <None Include="wwwroot\UITheme\assets\fonts\Simple-Line-Icons.svg" />
+    <None Include="wwwroot\UITheme\assets\fonts\Simple-Line-Icons.woff2" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\cross.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\decor.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\home.rar" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\icons.rar" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\icons\bottle.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\icons\hot-stone-massage.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\icons\people.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\icons\relax.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\icons\tool.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\icons\video-play.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\logo 2.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\logo.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\logo1.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\man.svg" />
+    <None Include="wwwroot\UITheme\assets\images\imgroyalspa\video-play.svg" />
+    <None Include="wwwroot\UITheme\assets\images\presets\preset1\logo.psd" />
+    <None Include="wwwroot\UITheme\assets\images\v24.rar" />
+    <None Include="wwwroot\UITheme\assets\js\998e03645d46a4a43fd65f7f3114d7fd_0.js" />
+    <None Include="wwwroot\UITheme\assets\js\analytics.js" />
+    <None Include="wwwroot\UITheme\assets\js\blueimp-gallery.min.js" />
+    <None Include="wwwroot\UITheme\assets\js\bootbox.min.js" />
+    <None Include="wwwroot\UITheme\assets\js\bundle - Copy.js" />
+    <None Include="wwwroot\UITheme\assets\js\bundle.js" />
+    <None Include="wwwroot\UITheme\assets\js\custom.js" />
+    <None Include="wwwroot\UITheme\assets\js\demo-medical.js" />
+    <None Include="wwwroot\UITheme\assets\js\engine.jquery.js" />
+    <None Include="wwwroot\UITheme\assets\js\jquery-2.1.3.js" />
+    <None Include="wwwroot\UITheme\assets\js\jquery-noconflict.js" />
+    <None Include="wwwroot\UITheme\assets\js\jquery-ui.js" />
+    <None Include="wwwroot\UITheme\assets\js\jquery-ui.min.js" />
+    <None Include="wwwroot\UITheme\assets\js\jquery.easing.js" />
+    <None Include="wwwroot\UITheme\assets\js\jquery.min.js" />
+    <None Include="wwwroot\UITheme\assets\js\owl.carousel.js" />
+    <None Include="wwwroot\UITheme\assets\js\sppagebuilder.js" />
+    <None Include="wwwroot\UITheme\assets\js\style.switcher.localstorage.js" />
+    <None Include="wwwroot\UITheme\assets\js\theme.init.js" />
+    <None Include="wwwroot\UITheme\assets\js\theme.js" />
+    <None Include="wwwroot\UITheme\assets\js\ug-theme-tilesgrid.js" />
+    <None Include="wwwroot\UITheme\assets\js\unitegallery.min.js" />
+    <None Include="wwwroot\UITheme\assets\js\view.contact.js" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\accordion.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\bootstrap.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\forms.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\grid.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\icomoon.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\master.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\menu.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\mixins.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\presets.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\reset.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\responsive-1200px-min.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\responsive-767px-max.joomla.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\responsive-767px-max.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\responsive-768px-979px.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\responsive-navbar.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\responsive-utilities.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\responsive.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\rtl.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\theme.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\variables.less" />
+    <None Include="wwwroot\UITheme\assets\less\bootstrap-legacy\wells.less" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\155cc2d61a3c913c40c023c64fa9cb95_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\155cc2d61a3c913c40c023c64fa9cb95_1.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\1e0753e639182c83565a3952262e5938_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\2e1cb2260f3a5ce4964a5136c880d9d8_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\2ebf85b5ae59d86cd58169809afb5574_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\341dd6b64ffbac611aa8bb7c35cc26a1_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\34370dce35725d137ec8d411b9be8e1a_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\374fd6bad8e409401f4b63a92406d0b8_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\43670c4ec799ecdb9b68051c88a3666f_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\4ded5d83d26303370bd69559bde2cd49_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\4ded5d83d26303370bd69559bde2cd49_1.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\55c2d60968f07d07893bde10af38efa1_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\576b5412980dee371864eb5c8f28415b_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\6da64e304aee98f8952151adf52856b2_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\791e2984e2b2e69a5e0209445894d6e5_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\87953351ff99ecb8b8a0146cbb946e9e_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\8b53de29ed2eaa3501c216c0e2d55d1e_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\90ed6379a565e7915254c6b249d552dd_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\998.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\998e03645d46a4a43fd65f7f3114d7fd_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\9b42f9b479929d3f232925a86144c697_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\a0f748a5b66fecba090a468ba315a181_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\a0f748a5b66fecba090a468ba315a181_1.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\b6cbce8fe1e7d38f573152c5eaeff944_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\c6f3200bb8370d73b84abacac7d570d8_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\dd5354a40614353b1b163beabad09d8e_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\e505b68aeef415faefdb7f561a0632b6_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\e998953a59f586b725677e4a70aac53d_0.js" />
+    <None Include="wwwroot\UITheme\assets\media\plg_jchoptimize\cache\f3c45abf0ac0444282bffa41fb5f63ae_0.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\bootpag\bootpag.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\circle-flip-slideshow\js\jquery.flipshow.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\common\common.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\font-awesome\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\UITheme\assets\vendor\font-awesome\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\UITheme\assets\vendor\font-awesome\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\UITheme\assets\vendor\font-awesome\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\UITheme\assets\vendor\font-awesome\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\UITheme\assets\vendor\font-awesome\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\UITheme\assets\vendor\instafeed\instafeed.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\isotope\jquery.isotope.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\jquery-cookie\jquery-cookie.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\jquery-mousewheel\jquery.mousewheel.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\jquery.appear\jquery.appear.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\jquery.countdown\jquery.countdown.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\jquery.easing\jquery.easing.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\jquery.easy-pie-chart\jquery.easy-pie-chart.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\jquery.gmap\jquery.gmap.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\jquery.lazyload\jquery.lazyload.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\jquery.validation\jquery.validation.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\jquery\jquery.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\magnific-popup\jquery.magnific-popup.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\modernizr\modernizr.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\nivo-slider\jquery.nivo.slider.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\owl.carousel\owl.carousel.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\popper\umd\popper.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\rs-plugin\css\closedhand.123" />
+    <None Include="wwwroot\UITheme\assets\vendor\rs-plugin\css\openhand.123" />
+    <None Include="wwwroot\UITheme\assets\vendor\rs-plugin\fonts\revicons\revicons90c6.svg" />
+    <None Include="wwwroot\UITheme\assets\vendor\rs-plugin\js\jquery.themepunch.revolution.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\rs-plugin\js\jquery.themepunch.tools.min.js" />
+    <None Include="wwwroot\UITheme\assets\vendor\simple-line-icons\fonts\Simple-Line-Iconsb26c.svg" />
+    <None Include="wwwroot\UITheme\assets\vendor\simple-line-icons\fonts\Simple-Line-Iconsb26c.woff2" />
+    <None Include="wwwroot\UITheme\assets\vendor\vide\vide.min.js" />
+  </ItemGroup>
+
+</Project>

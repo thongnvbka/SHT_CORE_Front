@@ -1,0 +1,72 @@
+﻿@model WebAppBasite.Models.NewsViewModels.NewsCategoriesViewModels
+@{
+    ViewData["Title"] = "NewsTag";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section menuheader{
+    @await Component.InvokeAsync("Menu")
+}
+@section headermeta{
+    <title>Thẩm mỹ viện Sao Hà Thành - Thẻ @((Model.Data.Results.FirstOrDefault() != null) ? Model.Data.Results.FirstOrDefault().TagName : "")</title>
+    <meta property="og:url" content='http://saohathanh.com/@((Model.Data.Results.FirstOrDefault() != null) ? "tag/" + (Model.Data.Results.FirstOrDefault().TagName  + ".html") : "")' />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content='Thẩm mỹ viện Sao Hà Thành - Thẻ @((Model.Data.Results.FirstOrDefault() != null) ? Model.Data.Results.FirstOrDefault().TagName : "")' />
+    <meta property="og:description" content='Thẩm mỹ viện Sao Hà Thành - Thẻ @((Model.Data.Results.FirstOrDefault() != null) ? Model.Data.Results.FirstOrDefault().TagName : "")' />
+}
+
+<div class="breadcrumbs-wrapper" id="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb">
+
+            <li class="active"><span>Tag:</span></li>
+            <li class="active"><span>@((Model != null && Model.Data.Results.Count > 0) ? Model.Data.Results.FirstOrDefault().TagName : "")</span></li>
+        </ol>
+    </div>
+</div>
+<section>
+    <div class="container list">
+        <div class="hr-heading rotate">
+            <h2>Tag - @((Model != null && Model.Data.Results.Count > 0) ? Model.Data.Results.FirstOrDefault().TagName : "") </h2>
+        </div>
+    </div>
+    <div class="container">
+        <div id="boxCategory" class="resultProductsCats tab-content">
+            <div class="tab-pane fade in active">
+                <div class="product_tabs_slide owl_design product_tabs_slide_first">
+
+                    @foreach (var item in Model.Data.Results)
+                    {
+                        var link = "/" + item.cate_slug + "/" + item.Slug + ".html";
+                        <ul class="item catedm col-md-4 col-sm-6 col-xs-12  ivt" id="4999421"
+                            data-storeid="19287">
+                            <li class="item_product item_cate tab_item">
+                                <div class="chir_loop loop_item animated zoomIn">
+                                    <div class="chir-img insScroll">
+                                        <a href="@link"
+                                           title="@item.Title">
+                                            @Html.Raw(SUtility.GetThumbNail(item.Title, item.Thumbnail, "368x207"))
+                                        </a>
+
+                                    </div>
+                                    <div class="product-detail clearfix">
+                                        <h3 class="pro-name">
+                                            <a href="@link"
+                                               title="@item.Title">
+                                                @item.Title
+                                            </a>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+        @(await Component.InvokeAsync("Pager", Model.Data))
+    </div>
+</section>
+

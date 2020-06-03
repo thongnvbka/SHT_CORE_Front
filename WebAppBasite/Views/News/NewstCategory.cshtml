@@ -1,0 +1,90 @@
+﻿
+@model WebAppBasite.Models.NewsViewModels.NewsCategoriesViewModels
+@{
+    ViewData["Title"] = "NewstCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@using PagedList.Mvc;*@
+
+
+@section headermeta{
+    <title>Thẩm mỹ viện Sao Hà Thành - Chuyên mục @(Model.Data.Results.FirstOrDefault().TenDanhMuc)</title>
+    <meta property="og:url" content="http://saohathanh.com/@(Model.Data.Results.FirstOrDefault().cate_slug).html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Thẩm mỹ viện Sao Hà Thành - Chuyên mục @Model.Data.Results.FirstOrDefault().TenDanhMuc" />
+    <meta property="og:description" content="Thẩm mỹ viện Sao Hà Thành - Chuyên mục @Model.Data.Results.FirstOrDefault().TenDanhMuc" />
+    <meta property="og:image:width" content="320">
+    <meta property="og:image:height" content="180">
+}
+@section menuheader{
+    @await Component.InvokeAsync("Menu")
+}
+<div class="breadcrumbs-wrapper" id="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="active"><span>Trang chủ</span></li>
+
+            <li class="active"><span>@((Model != null && Model.Data.Results.Count > 0) ? Model.Data.Results.FirstOrDefault().TenDanhMuc : "")</span></li>
+        </ol>
+    </div>
+</div>
+
+<!--           ¬ rooms-list           /-->
+
+
+
+<section>
+    <div class="container list">
+        <div class="container list">
+            <div class="hr-heading rotate">
+                <h2> @((Model != null && Model.Data.Results.Count > 0) ? Model.Data.Results.FirstOrDefault().TenDanhMuc : "") </h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="boxCategory" class="resultProductsCats tab-content">
+            <div class="tab-pane fade in active">
+                <div class="product_tabs_slide owl_design product_tabs_slide_first">
+                    @foreach (var item in Model.Data.Results)
+                    {
+                        var link = "/" + item.cate_slug + "/" + item.Slug + ".html";
+                        <ul class="item catedm col-md-4 col-sm-6 col-xs-12  ivt" id="4999421"
+                            data-storeid="19287">
+                            <li class="item_product item_cate tab_item">
+                                <div class="chir_loop loop_item animated zoomIn">
+                                    <div class="chir-img insScroll">
+                                        <a href="@link"
+                                           title="@item.Title">
+                                            @Html.Raw(SUtility.GetThumbNail(item.Title, item.Thumbnail, "368x207"))
+                                            @*<img src="@(ViELearn.TinTuc.App_Code.PLibs.GetAdminUrl()+ item.Thumbnail )" alt="@item.TenDanhMuc">*@
+                                        </a>
+                                    </div>
+                                    <div class="product-detail clearfix">
+                                        <h3 class="pro-name">
+                                            <a href="@link"
+                                               title="@item.Title">
+                                                @item.Title
+                                            </a>
+                                        </h3>
+                                        @*<p class="pro-price">
+                                            240,000 ₫
+                                        </p>*@
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    }
+                </div>
+            </div>
+
+        </div>
+        @*<span class="labelPages">trang:@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</span>*@
+        @(await Component.InvokeAsync("Pager", Model.Data))
+    </div>
+</section>
+
+
+
+
+<!--           end rooms-list           /-->

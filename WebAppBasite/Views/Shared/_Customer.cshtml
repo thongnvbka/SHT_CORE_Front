@@ -1,0 +1,726 @@
+﻿<style>
+    .md-form {
+        position: relative;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        top: 100px;
+        right: 0;
+        left: 0;
+        z-index: 1050;
+        -webkit-overflow-scrolling: touch;
+        outline: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+
+    .md-form input[type=text]:not(.browser-default) {
+        box-sizing: content-box;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #ced4da;
+        border-radius: 0;
+        outline: 0;
+        box-shadow: none;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        width: 100%;
+        text-transform: uppercase;
+    }
+
+    @@media (min-width: 768px) {
+        .modal-dialog {
+            width: auto;
+            margin: 30px auto;
+        }
+    }
+
+    @@media (min-width: 992px) {
+        input[type=text], input[type=email], input[type=password], input[type=number], input[type=search], textarea {
+            border: 1px solid #b5b5b5;
+            padding: 0;
+            font-size: 17px;
+            color: #757575;
+            border-radius: 0;
+        }
+
+        .modal .modal-dialog .modal-content {
+            max-width: initial;
+            width: 945px;
+            margin: auto;
+            border: none;
+            box-shadow: 0 0.19444rem 0.55556rem rgba(0,0,0,.15);
+            box-shadow: none !important;
+            border: none !important;
+            border-radius: 0;
+        }
+
+        .modal .btn {
+            display: block;
+            width: 100%;
+            max-width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 15px 0;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+
+        .modal-title {
+            line-height: 1.42857;
+            color: #e6b946;
+            margin: 10px 161px;
+            font-weight: 700;
+            font-size: 28px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .ml-3, .mx-3 {
+            margin-left: 5rem !important;
+            margin-right: 5rem !important;
+        }
+
+        .bootbox-alert .btn {
+            display: block;
+            width: 100%;
+            max-width: 100px;
+            letter-spacing: 1px;
+            padding: 10px 0;
+            border-radius: 0;
+            margin-right: 0;
+        }
+
+        .error {
+            font-style: italic;
+            color: #ff0000 !important;
+            font-size: 13px !important;
+            display: none;
+            margin-left: 10px;
+        }
+
+        .error-sdt {
+            font-style: italic;
+            color: #ff0000 !important;
+            font-size: 13px !important;
+            margin-left: 10px;
+        }
+    }
+
+    @@media (min-width: 768px) and (max-width: 992px) {
+        .modal .modal-dialog .modal-content {
+            max-width: initial;
+            width: 400px;
+            margin: auto;
+            border: none;
+            box-shadow: 0 0.19444rem 0.55556rem rgba(0,0,0,.15);
+            box-shadow: none !important;
+            border: none !important;
+            border-radius: 0;
+        }
+
+
+        .modal-title {
+            line-height: 1.42857;
+            color: #e6b946;
+            font-weight: 700;
+            font-size: 17px;
+            letter-spacing: 1px;
+        }
+
+        .ml-3, .mx-3 {
+            margin-left: 3rem !important;
+            margin-right: 3rem !important;
+        }
+
+        .modal .btn {
+            display: block;
+            width: 100%;
+            max-width: 145px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 15px 0;
+            text-transform: uppercase;
+        }
+
+        .bootbox-alert .btn {
+            display: block;
+            width: 100%;
+            max-width: 40px;
+            letter-spacing: 1px;
+            padding: 10px 0;
+            border-radius: 0;
+            margin-right: 0;
+        }
+
+        input[type=text], input[type=email], input[type=password], input[type=number], input[type=search], textarea {
+            border: 1px solid #b5b5b5;
+            padding: 0;
+            font-size: 14px;
+            color: #757575;
+            border-radius: 0;
+        }
+
+        .error {
+            font-style: italic;
+            color: #ff0000 !important;
+            font-size: 10px !important;
+            display: none;
+            margin-left: 10px;
+        }
+
+        .error-sdt {
+            font-style: italic;
+            color: #ff0000 !important;
+            font-size: 10px !important;
+            margin-left: 10px;
+        }
+    }
+
+    @@media (min-width: 376px) and (max-width: 767px) {
+        .modal-title {
+            line-height: 1.42857;
+            color: #e6b946;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+
+        .modal .btn {
+            display: block;
+            width: 100%;
+            max-width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 15px 0;
+            text-transform: uppercase;
+        }
+
+        .bootbox-alert .btn {
+            display: block;
+            width: 100%;
+            max-width: 40px;
+            letter-spacing: 1px;
+            padding: 10px 0;
+            border-radius: 0;
+            margin-right: 0;
+        }
+
+        .modal .modal-dialog .modal-content {
+            max-width: initial;
+            width: 350px;
+            margin: auto;
+            border: none;
+            box-shadow: 0 0.19444rem 0.55556rem rgba(0,0,0,.15);
+            box-shadow: none !important;
+            border: none !important;
+            border-radius: 0;
+        }
+
+        .ml-3, .mx-3 {
+            margin-left: 3rem !important;
+            margin-right: 3rem !important;
+        }
+
+        input[type=text], input[type=email], input[type=password], input[type=number], input[type=search], textarea {
+            border: 1px solid #b5b5b5;
+            padding: 0;
+            font-size: 11px;
+            color: #757575;
+            border-radius: 0;
+        }
+
+        .error {
+            font-style: italic;
+            color: #ff0000 !important;
+            font-size: 8px !important;
+            display: none;
+            margin-left: 10px;
+        }
+
+        .error-sdt {
+            font-style: italic;
+            color: #ff0000 !important;
+            font-size: 8px !important;
+            margin-left: 10px;
+        }
+    }
+
+    @@media (max-width: 375px) {
+        .modal-dialog {
+            width: auto;
+            margin: 30px auto;
+        }
+
+        .modal .btn {
+            display: block;
+            width: 100%;
+            max-width: 125px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 15px 0;
+        }
+
+        .bootbox-alert .btn {
+            display: block;
+            width: 100%;
+            max-width: 40px;
+            letter-spacing: 1px;
+            padding: 10px 0;
+            border-radius: 0;
+            margin-right: 0;
+        }
+
+        .ml-3, .mx-3 {
+            margin-left: 1rem !important;
+            margin-right: 1rem !important;
+        }
+
+        .modal-title {
+            line-height: 1.42857;
+            color: #e6b946;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .modal .modal-dialog .modal-content {
+            max-width: initial;
+            width: 300px;
+            margin: auto;
+            border: none;
+            box-shadow: 0 0.19444rem 0.55556rem rgba(0,0,0,.15);
+            box-shadow: none !important;
+            border: none !important;
+            border-radius: 0;
+        }
+
+        input[type=text], input[type=email], input[type=password], input[type=number], input[type=search], textarea {
+            border: 1px solid #b5b5b5;
+            padding: 0;
+            font-size: 8px;
+            color: #757575;
+            border-radius: 0;
+        }
+
+        .error {
+            font-style: italic;
+            color: #ff0000 !important;
+            font-size: 8px !important;
+            display: none;
+            margin-left: 10px;
+        }
+
+        .error-sdt {
+            font-style: italic;
+            color: #ff0000 !important;
+            font-size: 8px !important;
+            margin-left: 10px;
+        }
+    }
+
+    .md-form label {
+        position: absolute;
+        top: 10px;
+        left: -11px;
+        font-size: 1rem;
+        transition: transform .2s ease-out,color .2s ease-out;
+        transform-origin: 0 100%;
+        transform: translateY(26px);
+        cursor: text;
+        color: #bebec0;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: .5rem;
+    }
+
+    .md-form input:not([type]) + label:after, .md-form input[type=date]:not(.browser-default) + label:after, .md-form input[type=datetime-local]:not(.browser-default) + label:after, .md-form input[type=datetime]:not(.browser-default) + label:after, .md-form input[type=email]:not(.browser-default) + label:after, .md-form input[type=number]:not(.browser-default) + label:after, .md-form input[type=password]:not(.browser-default) + label:after, .md-form input[type=search-md] + label:after, .md-form input[type=search]:not(.browser-default) + label:after, .md-form input[type=tel]:not(.browser-default) + label:after, .md-form input[type=text]:not(.browser-default) + label:after, .md-form input[type=time]:not(.browser-default) + label:after, .md-form input[type=url]:not(.browser-default) + label:after, .md-form textarea.md-textarea + label:after {
+        content: "";
+        position: absolute;
+        top: 65px;
+        display: block;
+        opacity: 0;
+        transition: .2s opacity ease-out,.2s color ease-out;
+        width: 100%;
+        text-transform: uppercase;
+    }
+
+    #myModal .modal-footer {
+        padding: 15px;
+        text-align: right;
+        border-top: none;
+    }
+
+
+    .md-form input[type=text]:not(.browser-default):focus:not([readonly]) {
+        border-bottom: 1px solid #e6b946;
+        box-shadow: 0 1px 0 0 #e6b946;
+    }
+
+    .md-form label.actived {
+        transform: translateY(-25px) scale(.7);
+        font-size: 1rem;
+    }
+
+
+
+    .modal-header {
+        background-color: #ffffff;
+    }
+
+    label {
+        font-weight: normal;
+    }
+
+    #myModal .modal-footer {
+        text-align: right;
+        border-top: none;
+        padding-bottom: 5%;
+    }
+
+    .modal .modal-dialog .modal-header {
+        padding-top: 4%;
+        padding-bottom: 0;
+        border-bottom-width: 0;
+    }
+
+    #myModal .modal .btn {
+        display: block;
+        width: 100%;
+        max-width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px 0;
+        border-radius: 8px;
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .modal .modal-dialog .close {
+        background-color: #bebec0;
+        width: 30px;
+        height: 30px;
+    }
+
+    .bootbox-alert .modal-dialog .modal-content {
+        max-width: 570px;
+        /*margin: auto;
+        border: none;
+        box-shadow: 0 0.19444rem 0.55556rem rgba(0,0,0,.15);
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0;*/
+    }
+
+    .bootbox-alert {
+        position: absolute;
+        top: 10%;
+    }
+
+        .bootbox-alert .modal-footer {
+            padding: 15px;
+            text-align: right !important;
+            border-top: none;
+        }
+
+    .bootbox-close-button {
+        margin-top: 0px !important;
+    }
+
+    .btn-primary:focus {
+        color: white;
+        background-color: #ebbe1d;
+        border-color: #ebbe1d;
+        outline: 0;
+    }
+
+    label {
+        font-weight: 400;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: 5px;
+        text-transform: inherit !important;
+    }
+
+
+
+    input.invalid, textarea.invalid {
+        border: 2px solid red;
+    }
+
+    input.valid, textarea.valid {
+        border: 2px solid green;
+    }
+
+
+
+
+    .error_show {
+        color: red;
+        margin-left: 10px;
+    }
+</style>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Đăng ký ngay để nhận voucher khuyến mãi và thăm khám miễn phí</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="register">
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <input type="text" placeholder="Họ và tên" name="txtname" title="Nhập tên khách hàng" id="txtname" required class="form-checkfield validate">
+                        <label id="kh_hoten-error" class="error" for="kh_hoten">Nhập tên khách hàng</label>
+                        @*<label data-error="wrong" id="lab-name" data-success="right" for="form3">Họ và tên</label>*@
+
+                    </div>
+                    <div class="md-form mb-5">
+                        <input type="text" placeholder="Số điện thoại" name="txtphone" title="Nhập điện thoại" id="txtphone" required class="form-checkfield validate">
+                        <label id="kh_sdt-error" class="error" for="kh_sdt">Nhập số điện thoại</label>
+                        <label id="kh_sdt-fomat" class="error"></label>
+                        @*<label data-error="wrong" data-success="right" for="form3">Số điện thoại</label>*@
+                    </div>
+                    <div class="md-form mb-5">
+                        <input type="text" placeholder="Dịch vụ quan tâm" required title="Nhập dịch vụ quan tâm" id="txtservice" name="txtservice" class="form-checkfield validate">
+                        <label id="kh_service-error" class="error" for="kh_servic">Nhập dịch vụ quan tâm</label>
+                        @*<label data-error="wrong" data-success="right" for="form3">Dịch vụ quan tâm</label>*@
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <div id='recaptcha' class="g-recaptcha"
+                         data-sitekey="6LfycbwUAAAAAGeDZsZodB3wbKtZ8uhSjQWq3Tda"
+                         data-callback="send"
+                         data-size="invisible"></div>
+                    <button id="submit" class="btn  btn--darker ">Đăng ký </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="~/UITheme/assets/js/bootbox.min.js"></script>
+<script type="text/javascript">
+    //$("#form-name").focus(function () {
+    //    $('.md-form #lab-name').addClass("actived");
+    //});
+        //function onSubmit(token) {
+        //    send();
+        //}
+    function validate(e) {
+       // alert(1)
+        e.preventDefault();
+        //event.preventDefault();
+        if ($('#txtname').val()=="") {
+           // bootbox.alert("Họ tên không được để trống");
+            $('#kh_hoten-error').show();
+           // alert("a")
+
+        } else if ($('#txtphone').val()=="") {
+            $('#kh_sdt-error').show();
+
+        }
+        else if ($('#txtservice').val()=="") {
+            $('#kh_service-error').show();
+        }
+        else if (isValidMobile($('#txtphone').val()) != "ok") {
+
+            $('#kh_sdt-fomat').show().text(isValidMobile($('#txtphone').val()));
+        }
+        else {
+            $('#kh_sdt-fomat').hide()
+            grecaptcha.execute();
+        }
+    }
+    $("#txtname").on("keyup", function () {
+        var value = $.trim($(this).val());
+        if (value) {
+            $('#kh_hoten-error').hide();
+        } else {
+            $('#kh_hoten-error').show();
+        }
+    });
+    $("#txtphone").on("keyup", function () {
+        var value = $.trim($(this).val());
+        if (value) {
+            $('#kh_sdt-error').hide();
+
+            if (isValidMobile(value) != "ok") {
+                $('#kh_sdt-fomat').show().text(isValidMobile(value))
+            }
+            else {
+                $('#kh_sdt-fomat').hide()
+            }
+        } else {
+            $('#kh_sdt-fomat').hide();
+            $('#kh_sdt-error').show();
+        }
+    });
+    $("#txtservice").on("keyup", function () {
+        var value = $.trim($(this).val());
+        if (value) {
+            $('#kh_service-error').hide();
+        } else {
+            $('#kh_service-error').show();
+        }
+    });
+    function isValidMobile(phone) {
+        if (phone.length < 10 || phone.length > 11) return "SDT sai chiều dài (được phép 10->11 ký tự)";
+        if (phone.indexOf(" ") !== -1) return "SDT không được chứa khoảng trống";
+        if (!/^\d+$/.test(phone)) return "SDT không được chứa chữ cái hoặc ký tự đặc biệt";
+        if (phone.startsWith("01") && phone.length == 10) return "SDT sai chiều dài (bắt đầu bằng 01 mà lại có 10 số)";
+        if ((phone.startsWith("08") || phone.startsWith("09")) && phone.length == 11) return "SDT sai chiều dài (bắt đầu bằng 08,09 mà lại có 11 số)";
+        var start3 = phone.substr(0, 3);
+        var start4 = phone.substr(0, 4);
+        // Vietel: 086, 096, 097, 098, 0162, 0163, 0164, 0165, 0166, 0167, 0168, 0169.
+        // Vietel mới: 086, 096, 097, 098, 032, 033, 034, 035, 036, 037, 038, 039.
+        if (!(start3 == "086" || start3 == "096" || start3 == "097" || start3 == "098" ||
+            start3 == "032" || start3 == "033" || start3 == "034" || start3 == "035" ||
+            start3 == "036" || start3 == "037" || start3 == "038" || start3 == "039"// ||
+            //start4 == "0162" || start4 == "0163" || start4 == "0164" || start4 == "0165" ||
+            //start4 == "0166" || start4 == "0167" || start4 == "0168" || start4 == "0169"
+        ) &&
+
+            // mobi: 089, 090, 093, 0120, 0121, 0122, 0126, 0128.
+            // mobi mới: 089, 090, 093, 070, 079, 077, 076, 078.
+            !(start3 == "089" || start3 == "090" || start3 == "093" ||
+                start3 == "070" || start3 == "079" || start3 == "077" ||
+                start3 == "076" || start3 == "078" //||
+                //start4 == "0120" || start4 == "0121" || start4 == "0122" ||
+                //start4 == "0126" || start4 == "0128"
+            ) &&
+
+            // vina: 088, 091, 094, 0123, 0124, 0125, 0127, 0129.
+            // vina mới: 088, 091, 094, 083, 084, 085, 081, 082.
+            !(start3 == "088" || start3 == "091" || start3 == "094" ||
+                start3 == "083" || start3 == "084" || start3 == "085" ||
+                start3 == "081" || start3 == "082"// ||
+                //start4 == "0123" || start4 == "0124" || start4 == "0125" ||
+                //start4 == "0127" || start4 == "0129"
+            ) &&
+
+            // htmobile: 092, 0188, 0186.
+            // htmobile mới: 092, 058, 056. 052
+            !(start3 == "092" || start3 == "052" || start3 == "056" || start3 == "058"// ||
+                //start4 == "0188" || start4 == "0186"
+            ) &&
+
+            // gmobile: 099, 0199.
+            // gmobile: 099, 059.
+            !(start3 == "099" || start3 == "059"// || start4 == "0199"
+            )) {
+            return "Đầu số chưa được hỗ trợ";
+        }
+
+        return "ok";
+    }
+    function onload() {
+        var element = document.getElementById('submit');
+        element.onclick = validate;
+    }
+    $(document).ready(function () {
+        onload();
+    });
+
+    //$(document).ready(function () {
+    //    $('#frmReservation').submit(function (e) {
+    //        // this code prevents form from actually being submitted
+    //        e.preventDefault();
+    //        e.returnValue = false;
+
+    //        // some validation code here: if valid, add podkres1 class
+    //        if ($('input.podkres1').length > 0) {
+    //            // do nothing
+    //        } else {
+    //            send();
+    //        }
+    //    });
+    //});
+
+    function send(token) {
+        var ho_ten = $('#txtname').val();
+        var sdt_lienhe = $('#txtphone').val();
+        var service = $('#txtservice').val();
+
+        $.ajax({
+            data: {
+                ho_ten: ho_ten,
+                sdt: sdt_lienhe,
+                service: service
+            },
+            type: 'POST',
+            datatype: 'json',
+            //url: 'Home/SubmitComment',
+            url: '@Url.Action("SubmitReservation", "Home")',
+            success: function (response) {
+                if (response.status) {
+
+                    $('#txtname').val('');
+                    $('#txtphone').val('');
+                    $('#txtservice').val('');
+                    $('#myModal').hide();
+                    bootbox.alert({
+                        message: "Bạn đã đăng ký thành công, chúng tôi sẽ liên hệ với bạn sau",
+                        callback: function () {
+                            window.location.reload();
+                        }
+                    })
+                }
+                else {
+                    $('#myModal').hide();
+                    //bootbox.alert({
+                    //    message: "Lỗi mạng, vui lòng thử lại!,ấn nút f5 để làm lại",
+                    //});
+                    alert(response.message)
+                }
+            },
+            error: function (response) {
+                alert(response.message)
+                //$('#myModal').hide();
+                //bootbox.alert({
+                //    message: "Lỗi mạng, vui lòng thử lại!,ấn nút f5 để làm lại",
+                //});
+            }
+        });
+    }
+
+        $('#txtphone').keypress(function (event) {
+            return isNumber(event, this)
+        });
+
+    function isNumber(evt, element) {
+
+        var charCode = (evt.which) ? evt.which : event.keyCode
+
+        if (
+            (charCode != 45 || $(element).val().indexOf('-') != -1) &&      // “-” CHECK MINUS, AND ONLY ONE.
+            (charCode != 46 || $(element).val().indexOf('.') != -1) &&      // “.” CHECK DOT, AND ONLY ONE.
+            (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+</script>
+
+

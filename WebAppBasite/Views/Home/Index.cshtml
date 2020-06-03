@@ -1,0 +1,683 @@
+﻿@model WebAppBasite.Models.ViewModel.HomeViewModels
+@using WebAppBasite.App_Code
+@using WebAppBasite.Common.Lib
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles
+    {
+    <link href="https://npmcdn.com/flickity@2/dist/flickity.css" rel="stylesheet" />
+    <style>
+        img {
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 100%;
+            height: auto;
+            -ms-interpolation-mode: bicubic;
+        }
+
+        .mg-l-r-0 {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
+        .slider1 {
+        }
+
+        .carousel-cell {
+            width: 100%;
+            height: 200px;
+            margin-right: 10px;
+            background: #212121;
+            border-radius: 5px;
+            counter-increment: carousel-cell;
+        }
+
+            /* cell number */
+
+            .carousel-cell:before {
+                display: none;
+            }
+
+        .small-centered, .small-centered:last-child:not(:first-child) {
+            float: none;
+            clear: both;
+        }
+
+        .carousel-nav .carousel-cell {
+            height: 80px;
+            width: 100px;
+        }
+
+            .carousel-nav .carousel-cell:before {
+                font-size: 50px;
+                line-height: 80px;
+            }
+
+            .carousel-nav .carousel-cell.is-nav-selected {
+                //background: #ED2;
+            }
+
+        .small-centered {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .flex-video, .responsive-embed {
+            position: relative;
+            height: 0;
+            margin-bottom: 1rem;
+            padding-bottom: 50%;
+            overflow: hidden;
+        }
+    </style>
+}
+
+
+<!-- meuu-top -->
+<!-- menu-main -->
+<div class="section-1">
+    <div class="container">
+        <div class="col-sm-12 col-xs-12 col-md-12">
+            <div class="text-center featured-text">
+                <h2 class="wow fadeInUp"> Dịch Vụ Nổi Bật</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.2s">Với sứ mệnh cao cả, Bệnh viên thẩm mỹ <span class="text-sht"> Sao hà thành</span>   không ngừng cải tiến và nâng cao chất lượng dịch vụ, chất lượng y bác sĩ, chất lượng sản phẩm nhằm mang đến sự hài lòng tuyệt đối và vẻ đẹp viên mãn nhất cho khách hàng</p>
+                <p class="wow fadeInUp" data-wow-delay="0.4s">
+                    Tại <span class="text-sht"> Sao hà thành</span> bên cạnh các phương pháp làm đẹp hiện hành, chúng tôi còn ứng dụng những phương pháp làm đẹp tân tiến từ Hàn, Mỹ và Châu Âu để đáp ứng nhu cầu làm đẹp của khách hàng. Khi đến với  <span class="text-sht"> Sao hà thành</span> khách hàng sẽ được tư vấn nhiệt tình để có thể tìm được phương pháp làm đẹp ưng ý nhất.
+                </p>
+            </div>
+            <div class="row text-center box-img ">
+                <div class="">
+                    @foreach (var item in Model.ImgService)
+                    {
+                        <div class="col-md-3 col-sm-3 col-xs-6 wow fadeInUp">
+
+                            <div class="img-style-blue">
+                                <img class="img-circle" src="@(WebAppBasite.App_Code.PLibs.GetAdminUrl() + item.main_content )" />
+                            </div>
+                            <div class="btn-img">
+                                <span>
+                                    @item.tooltip
+                                </span>
+                            </div>
+                            <p>
+                                Phẫu thuật tạo hình với phương châm đem lại sự hài lòng với vẻ đẹp của khách hàng
+                            </p>
+                        </div>
+                    }
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="section-2">
+    <div class="container">
+        <div class="col-sm-12 col-xs-12 col-md-12">
+            <div class="text-center featured-text">
+                <h2 class="wow fadeInUp" data-wow-delay="0.2s"> Vì sao lại chọn Sao Hà Thành?</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.4s">Với sứ mệnh cao cả, Bệnh viên thẩm mỹ <span class="text-sht"> Sao hà thành</span> không ngừng cải tiến và nâng cao chất lượng dịch vụ, chất lượng y bác sĩ, chất lượng sản phẩm nhằm mang đến sự hài lòng tuyệt đối và vẻ đẹp viên mãn nhất cho khách hàng.</p>
+
+            </div>
+            <div class="row text-center sec-2-box-item">
+                <div class="box-img ">
+                    <div class="col-md-3 col-sm-3 col-xs-6 wow fadeInUp">
+
+                        <div class="img-style-blue">
+                            <img class="img-circle" src="~/img/Group 3.png" />
+                        </div>
+                        <div class="img-tt">
+                            Tư vấn miễn phí
+                        </div>
+                        <p>
+                            Phẫu thuật tạo hình với phương châm đem lại sự hài lòng với vẻ đẹp của khách hàng
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6 wow fadeInUp">
+
+                        <div class="img-style-blue">
+                            <img class="img-circle" src="~/img/Group 3.png" />
+                        </div>
+                        <div class="img-tt">
+                            Đưa đón tận nơi
+                        </div>
+                        <p>
+                            Phẫu thuật tạo hình với phương châm đem lại sự hài lòng với vẻ đẹp của khách hàng
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6 wow fadeInUp">
+
+                        <div class="img-style-blue">
+                            <img class="img-circle" src="~/img/Group 3.png" />
+                        </div>
+                        <div class="img-tt">
+                            Nghỉ dưỡng phẫu thuật
+                        </div>
+                        <p>
+                            Phẫu thuật tạo hình với phương châm đem lại sự hài lòng với vẻ đẹp của khách hàng
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6 wow fadeInUp">
+
+                        <div class="img-style-blue">
+                            <img class="img-circle" src="~/img/Group 3.png" />
+                        </div>
+                        <div class="img-tt">
+                            Chăm sóc tận nhà
+                        </div>
+                        <p>
+                            Phẫu thuật tạo hình với phương châm đem lại sự hài lòng với vẻ đẹp của khách hàng
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center sec-2-box-item-mobile">
+                <div class="box-img-mobile">
+                    <div class="">
+
+                        <div class="img-style-blue">
+                            <img class="img-circle" src="~/img/Group 3.png" />
+                        </div>
+                        <div class="img-tt">
+                            Tư vấn miễn phí
+                        </div>
+                        <p>
+                            Phẫu thuật tạo hình với phương châm đem lại sự hài lòng với vẻ đẹp của khách hàng
+                        </p>
+                    </div>
+                    <div class="">
+
+                        <div class="img-style-blue">
+                            <img class="img-circle" src="~/img/Group 3.png" />
+                        </div>
+                        <div class="img-tt">
+                            Đưa đón tận nơi
+                        </div>
+                        <p>
+                            Phẫu thuật tạo hình với phương châm đem lại sự hài lòng với vẻ đẹp của khách hàng
+                        </p>
+                    </div>
+                    <div class="">
+
+                        <div class="img-style-blue">
+                            <img class="img-circle" src="~/img/Group 3.png" />
+                        </div>
+                        <div class="img-tt">
+                            Nghỉ dưỡng phẫu thuật
+                        </div>
+                        <p>
+                            Phẫu thuật tạo hình với phương châm đem lại sự hài lòng với vẻ đẹp của khách hàng
+                        </p>
+                    </div>
+                    <div class="">
+
+                        <div class="img-style-blue">
+                            <img class="img-circle" src="~/img/Group 3.png" />
+                        </div>
+                        <div class="img-tt">
+                            Chăm sóc tận nhà
+                        </div>
+                        <p>
+                            Phẫu thuật tạo hình với phương châm đem lại sự hài lòng với vẻ đẹp của khách hàng
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="section-2a">
+    <div class="container box-about ">
+        <div class="box-about-img ">
+            <div class="wow slideInLeft">
+                <div>
+                    <img class="img img-responsive" src="~/img/room-1.png" />
+                </div>
+                <span class="text">
+                    Không gian sang trọng, đẳng cấp
+                    5 sao
+                </span>
+            </div>
+            <div class="wow slideInDown" data-wow-delay="0.2s">
+                <div>
+                    <img class="img img-responsive" src="/img/nhom-bac-si.png" />
+                </div>
+                <span class="text">
+                    Đội ngũ bác sĩ sao hà thành thái lan
+                </span>
+            </div>
+            <div class="wow slideInRight">
+                <div>
+                    <img class="img img-responsive" src="~/img/tech-1.png" />
+                </div>
+                <span class="text">
+                    Không gian sang trọng, đẳng cấp
+                    5 sao
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="section-3">
+    <div class="container">
+        <div class="col-sm-12 col-xs-12 col-md-12">
+            <div class="text-center featured-text">
+                <h2 class="wow fadeInUp" data-wow-delay="0.2s"> Người nổi tiếng nói gì về Sao Hà Thành?</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.4s">Với sứ mệnh cao cả, Bệnh viên thẩm mỹ <span class="text-sht"> Sao hà thành</span> không ngừng cải tiến và nâng cao chất lượng dịch vụ, chất lượng y bác sĩ, chất lượng sản phẩm nhằm mang đến sự hài lòng tuyệt đối và vẻ đẹp viên mãn nhất cho khách hàng.</p>
+
+            </div>
+            <div class="row sec-3-content">
+                <div class="col-md-6 col-sm-6 col-xs-12 sec-3-video wow slideInLeft">
+                    <div class="textwidget custom-html-widget">
+                        <iframe width="100%" height="320px" src="https://www.youtube.com/embed/EH0EJ2_5G50" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 wow slideInRight">
+                    <div class="execphpwidget">
+                        <div class="ykkh-wrapper">
+                            <div class="wrapcus">
+                                <div class="single">
+                                    <div class="thumb">
+                                        <a href=""
+                                           title="Nam ca sĩ Đức Phúc">
+                                            <img src="~/img/user-1.png" />
+                                        </a>
+                                    </div>
+                                    <div class="ykkh">
+                                        <p class="ykkh-title">
+                                            <a href="">
+                                                Nam ca sĩ Đức Phúc
+                                            </a>
+                                        </p> Với sứ mệnh cao cả, Bệnh viên thẩm mỹ Sao Hà Thành không ngừng cải tiến
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="single">
+                                    <div class="thumb">
+                                        <a href=""
+                                           title="Makeup Artist Tony: mình không nghĩ khuôn mặt lại thon gọn, ưa nhìn đúng chuẩn soái ca đến thế">
+                                            <img src="~/img/user-1.png" />
+                                        </a>
+                                    </div>
+                                    <div class="ykkh">
+                                        <p class="ykkh-title">
+                                            <a href="">
+                                                Nam ca sĩ Đức Phúc
+                                            </a>
+                                        </p> Với sứ mệnh cao cả, Bệnh viên thẩm mỹ Sao Hà Thành không ngừng cải tiến
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="single">
+                                    <div class="thumb">
+                                        <a href=""
+                                           title="">
+                                            <img src="~/img/user-1.png" />
+                                        </a>
+                                    </div>
+                                    <div class="ykkh">
+                                        <p class="ykkh-title">
+                                            <a href="">
+                                                Nam ca sĩ Đức Phúc
+                                            </a>
+                                        </p> Với sứ mệnh cao cả, Bệnh viên thẩm mỹ Sao Hà Thành không ngừng cải tiến
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <div class="container user-feedback">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp">
+                <div class="box-user" style="text-align: center;">
+                    <div class="img-fb">
+                        <img class="img-user img-circle " src="~/img/user-feedback.png" />
+                    </div>
+                     
+                    <p class="text-user">Ca sĩ Lệ Quyên</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp">
+                <div class="box-user" style="text-align: center;">
+                    <div class="img-fb">
+                        <img class="img-user img-circle " src="~/img/user-feedback.png" />
+                    </div>
+                    <p class="text-user">Ca sĩ Lệ Quyên</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp">
+                <div class="box-user" style="text-align: center;">
+                    <div class="img-fb">
+                        <img class="img-user img-circle " src="~/img/user-feedback.png" />
+                    </div>
+                    <p class="text-user">Ca sĩ Lệ Quyên</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 wow fadeInUp">
+                <div class="box-user" style="text-align: center;">
+                    <div class="img-fb">
+                        <img class="img-user img-circle " src="~/img/user-feedback.png" />
+                    </div>
+                    <p class="text-user">Ca sĩ Lệ Quyên</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container user-feedback-mobile">
+        <div class="row user-feedback-mobile-carousel">
+            <div class="">
+                <div class="box-user" style="text-align: center;">
+                    <div class="img-fb">
+                        <img class="img-user img-circle " src="~/img/user-feedback.png" />
+                    </div>
+
+                    <p class="text-user">Ca sĩ Lệ Quyên</p>
+                </div>
+            </div>
+            <div class="">
+                <div class="box-user" style="text-align: center;">
+                    <div class="img-fb">
+                        <img class="img-user img-circle " src="~/img/user-feedback.png" />
+                    </div>
+                    <p class="text-user">Ca sĩ Lệ Quyên</p>
+                </div>
+            </div>
+            <div class="">
+                <div class="box-user" style="text-align: center;">
+                    <div class="img-fb">
+                        <img class="img-user img-circle " src="~/img/user-feedback.png" />
+                    </div>
+                    <p class="text-user">Ca sĩ Lệ Quyên</p>
+                </div>
+            </div>
+            <div class="">
+                <div class="box-user" style="text-align: center;">
+                    <div class="img-fb">
+                        <img class="img-user img-circle " src="~/img/user-feedback.png" />
+                    </div>
+                    <p class="text-user">Ca sĩ Lệ Quyên</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-4">
+    <div class="container">
+        <div class="col-sm-12 col-xs-12 col-md-12">
+            <div class="text-center featured-text">
+                <h2 class="wow fadeInUp" data-wow-delay="0.2s"> Vì sao lại chọn Sao Hà Thành?</h2>
+                <p class="wow fadeInUp" data-wow-delay="0.4s">Với sứ mệnh cao cả, Bệnh viên thẩm mỹ Sao hà thành không ngừng cải tiến và nâng cao chất lượng dịch vụ, chất lượng y bác sĩ, chất lượng sản phẩm nhằm mang đến sự hài lòng tuyệt đối và vẻ đẹp viên mãn nhất cho khách hàng.</p>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="carousel img-before-after">
+
+                        <div class="slides" style="width: 930px; height: 330px;">
+
+
+                            <div class="slideItem">
+
+                                <a href="#"> <img src="/img/nhom-bac-si.png"> </a>
+                                <div class="title-img">aaaaaaaaaaaaaaa</div>
+
+                            </div>
+                            <div class="slideItem">
+                                <a href="#"> <img src="/img/room-1.png"> </a>
+                                <div class="title-img">bbbbbbbbbbb</div>
+                            </div>
+                            <div class="slideItem">
+                                <a href="#"> <img src="/img/nhom-bac-si.png"> </a>
+                                <div class="title-img">ccccccccccc</div>
+                            </div>
+                            <div class="slideItem">
+                                <a href="#"> <img src="/img/room-1.png" "> </a>
+                                <div class="title-img">ddddddddddddd</div>
+                            </div>
+                            <div class="slideItem">
+                                <a href="#"> <img src="/img/nhom-bac-si.png"> </a>
+                                <div class="title-img">eeeeeeeeeee</div>
+                            </div>
+                            <div class="slideItem">
+                                <a href="#"> <img src="/img/nhom-bac-si.png"> </a>
+                                <div class="title-img">fffffffffffffffffffff</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="section-5">
+    <div class="container">
+        <div class="col-sm-12 col-xs-12 col-md-12">
+            <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft">
+                <h3 class="sec-5-title"> Hoạt động sự kiện</h3>
+                <div class="row">
+                    <div class="col-sm-6 main-post-inner bord-right">
+                        <article>
+                            <figure>
+                                <a href="">
+                                    <img src="@(WebAppBasite.App_Code.PLibs.GetAdminUrl() + Model.ListTopHot.FirstOrDefault().Thumbnail)" alt="" class="img-responsive">
+                                </a>
+                            </figure>
+                            <div class="post-info">
+                                <h4><a href="#">@Model.ListTopHot.FirstOrDefault().Title</a></h4>
+                                <ul class="authar-info">
+                                    <li><i class="fa fa-calendar" aria-hidden="true"></i> <span class="au-text">@Clibs.UnixTimeStampToDateTime(double.Parse(Model.ListTopHot.FirstOrDefault().CreatedAt.ToString())).ToString("HH:mm dd/MM/yyyy")</span> </li>
+                                    <li><i class="fa fa-eye" aria-hidden="true"></i> <span class="au-text">@Model.ListTopHot.FirstOrDefault().view_total</span></li>
+                                </ul>
+                                <p>
+                                    @Model.ListTopHot.FirstOrDefault().Summary
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-sm-6">
+                        @foreach (var item in Model.ListTopHot.SkipWhile(x=>x.Id!=1))
+                        {
+                            <div class="news-list">
+                                <div class="news-list-item">
+                                    <div class="img-wrapper">
+                                        <a href="#" class="thumb">
+                                            <img src="@(WebAppBasite.App_Code.PLibs.GetAdminUrl() + item.Thumbnail)" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <div class="post-info-2">
+                                        <a href="#">@item.Title</a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight">
+                <h3 class="sec-5-title">Thư viện video</h3>
+                <div class="sec-5-video">
+                    <div class="row">
+                        <div class="small-centered column">
+
+                            <!-- Flickity HTML init -->
+                            <div class="carousel carousel-main" data-flickity>
+                                <div class="carousel-cell flex-video">
+                                    <iframe src="https://player.vimeo.com/video/20732587?color=969696" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>
+                                <div class="carousel-cell flex-video"><iframe width="640" height="360" src="https://www.youtube.com/embed/erko5I3a97c?enablejsapi=1&rel=0" frameborder="0" allowfullscreen></iframe></div>
+                                <div class="carousel-cell flex-video"><iframe width="560" height="315" src="https://www.youtube.com/embed/EH0EJ2_5G50" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                                <div class="carousel-cell flex-video"><iframe width="640" height="360" src="https://www.youtube.com/embed/Tpmejf2nDb4?enablejsapi=1&rel=0" frameborder="0" allowfullscreen></iframe></div>
+                                <div class="carousel-cell flex-video"><iframe width="640" height="360" src="https://www.youtube.com/embed/Tpmejf2nDb4?enablejsapi=1&rel=0" frameborder="0" allowfullscreen></iframe></div>
+                                <div class="carousel-cell flex-video"><iframe width="640" height="360" src="https://www.youtube.com/embed/Tpmejf2nDb4?enablejsapi=1&rel=0" frameborder="0" allowfullscreen></iframe></div>
+
+
+
+                            </div>
+
+                            <div class="carousel carousel-nav"
+                                 data-flickity='{ "asNavFor": ".carousel-main", "contain": true, "pageDots": false }'>
+                                <div class="carousel-cell">
+                                    <img src="https://i.ytimg.com/vi_webp/erko5I3a97c/sddefault.webp" />
+                                </div>
+                                <div class="carousel-cell">
+                                    <img src="https://i.ytimg.com/vi_webp/erko5I3a97c/sddefault.webp" />
+                                </div>
+                                <div class="carousel-cell">
+                                    <img src="https://i.ytimg.com/vi_webp/erko5I3a97c/sddefault.webp" />
+                                </div>
+                                <div class="carousel-cell">
+                                    <img src="https://i.ytimg.com/vi_webp/erko5I3a97c/sddefault.webp" />
+                                </div>
+                                <div class="carousel-cell">
+                                    <img src="https://i.ytimg.com/vi_webp/erko5I3a97c/sddefault.webp" />
+                                </div>
+                                <div class="carousel-cell">
+                                    <img src="https://i.ytimg.com/vi_webp/erko5I3a97c/sddefault.webp" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/js/flickity.pkgd.js"></script>
+    <script>
+        jQuery('.carousel-main').flickity({
+            contain: true,
+            pageDots: false,
+            prevNextButtons: false,
+        });
+        jQuery('.carousel-main').on('settle.flickity', function () {
+            newTarg = jQuery(".carousel-cell.flex-video").not('.is-selected');
+            jQuery(newTarg).find('iframe').each(function () {
+                var src = $(this).attr('src');
+                $(this).attr('src', src);
+            });
+            console.log('slide changes');
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var width = $(window).width();
+            var height = $('html, body').height();
+            $('.img-before-after').carousel({
+                hAlign: 'center',
+                vAlign: 'center',
+                hMargin: 0.4,
+                vMargin: 0.2,
+                carouselHeight: 330,
+                directionNav: true,
+                shadow: false,
+                buttonNav: 'bullets',
+                utoplayInterval: 10000,
+                autoplayTimeout: 4000,
+                mouse: true,
+                autoplay: true,
+                speed: 500
+            });
+            if (width < 768) {
+                $('.box-about-img').addClass('box-about-carousel');
+                $('.box-about-carousel').owlCarousel({
+                    items: 1,
+                    margin: 10,
+                    lazyLoad: true,
+                    navigation: true,
+                    owl2row: true,
+                    loop: true,
+                    autowidth: true,
+                    autoplay: false,
+                    responsiveClass: true,
+                    nav: true,
+                    navText: ['', ''],
+                    dots: false,
+                    autoHeight: false,
+                    autoplayTimeout: 4000,
+                    autoplayHoverPause: false,
+
+
+                });
+            }
+            //$('html, body').animate({
+            //    scrollTop: $('.section-1 .box-img').offset().top
+            //}, 400);
+            var offset = $('.section-1 .box-img').offset().top;
+            console.log(height);
+            //if (offset < height) {
+            //    $('.section-1 .box-img').addClass('hien-ra');
+            //}
+        });
+
+        $('.box-img-mobile ').owlCarousel({
+            items: 1,
+            margin: 10,
+            lazyLoad: true,
+            navigation: true,
+            owl2row: true,
+            loop: true,
+            autowidth: true,
+            autoplay: false,
+            responsiveClass: true,
+            nav: true,
+            navText: ['', ''],
+            dots: false,
+            autoHeight: false,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: false,
+
+
+        });
+        $('.user-feedback-mobile-carousel').owlCarousel({
+            items: 1,
+            margin: 10,
+            lazyLoad: true,
+            navigation: true,
+            owl2row: true,
+            loop: true,
+            autowidth: true,
+            autoplay: false,
+            responsiveClass: true,
+            nav: true,
+            navText: ['', ''],
+            dots: false,
+            autoHeight: false,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: false,
+
+
+        });
+
+    </script>
+}
+
+<!-- end sercice -->

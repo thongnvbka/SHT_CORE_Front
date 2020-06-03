@@ -1,0 +1,84 @@
+﻿@using System.Data
+@using WebAppBasite.App_Code
+@model WebAppBasite.Models.ViewModel.HomeViewModels
+<section class="st-row st-row--gray">
+    <div class="container">
+        <div class="row">
+            <div class="container">
+                <div class="hr-heading rotate">
+                    <h1 class="master-title"><a id="thu_vien_anh"></a>THƯ VIỆN HÌNH ẢNH</h1>@*<small>Hãy thư giãn và sử dụng các dịch vụ tốt nhất</small>*@
+                </div>
+            </div>
+            <div class="gallery gallery--room">
+                <div class="container">
+                    <ul class="gallery-filter filter-button-group">
+
+                        @foreach (var item in Model.AlbumList)
+                        {
+                            <li class="gallery-filter__item">
+                                <button onclick="getImg(@item.id)" data-id="@item.id" id="btn_@item.id" class="btn_cat fil-button" data-filter="album_@item.id">@item.TenDanhMuc</button>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="container container-gallery">
+                    <div id="gallery" style="display:none;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="st-row st-row--gray s-video">
+    <div class="container" style="@((Model.VideoHome == null || Model.VideoHome.Count()==0)?"display:none":"")">
+        <a></a>
+        <div class="hr-heading rotate">
+            <h1 class="master-title">Video giới thiệu</h1>
+        </div>
+    </div>
+    <!--           = gallery           /-->
+    <div class="gallery gallery--room">
+        <div class="container">
+            <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+                <div class="slides"></div>
+                <h3 class="title"></h3>
+                <a class="prev show">‹</a>
+                <a class="next show">›</a>
+                <a class="close show">×</a>
+                <a class="play-pause"></a>
+                <ol class="indicator show"></ol>
+            </div>
+            <!--           ¬ gallery-filter           /-->
+            <ul class="nav nav-tabs gallery-filter" style="@((Model.VideoHome == null || Model.VideoHome.Count()==0)?"display:none":"")">
+                @foreach (var item in Model.VideoList)
+                {
+                    <li class="gallery-filter__item@(Model.VideoList.ToList().IndexOf(item)==0?" active":"")"><a data-toggle="tab" href="#tab_@item.id">@item.TenDanhMuc</a></li>
+                }
+            </ul>
+            <!--           end gallery-filter           /-->
+            <!--           ¬ gallery-content           /-->
+            <div class="row">
+                <div class="tab-content">
+                    @foreach (var item in Model.VideoList)
+                    {
+                        <div id="tab_@item.id" class="tab-pane fade@(Model.VideoList.ToList().IndexOf(item)==0?" in active":"")">
+                            @foreach (var video in Model.VideoHome.Where(m => m.AlbumId == item.id))
+                            {
+                                <div class="thumbnail ig_i4 col-xs-6 col-sm-4 col-md-3">
+                                    <a class="ig_i10" href="@video.url"
+                                       data-youtube="@WebAppBasite.Ultilities.PLibs.TachYoutubeKey(video.url)" type="text/html"
+                                       poster="@(WebAppBasite.App_Code.PLibs.GetAdminUrl()+ video.main_content)" title="">
+                                        <img src="@(WebAppBasite.App_Code.PLibs.GetAdminUrl()+ video.main_content)" alt="...">
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <!--           end gallery-content           /-->
+    </div>
+    <!--           end gallery           /-->
+</section>
